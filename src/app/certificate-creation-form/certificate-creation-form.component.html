@@ -1,0 +1,38 @@
+<div class="body">
+  <div class="form-head text">
+    <a class="text" style="font-size: x-large; color: white">Add new certificate</a>
+  </div>
+  <form class="input-form">
+    <div class="column-wrapper">
+      <div class="input-wrapper">
+        <span class="text">Certificate name</span>
+        <input type="text" class="input" name="name" [(ngModel)]="certificate.name"/>
+      </div>
+      <div class="input-wrapper">
+        <span class="text">Price</span>
+        <input type="text" class="input" name = "price" [(ngModel)]="certificate.price"/>
+      </div>
+      <div class="input-wrapper">
+        <span class="text">Valid days</span>
+        <input type="number" class="input" name="validDays" [(ngModel)]="certificate.validDays">
+      </div>
+    </div>
+    <div class="column-wrapper">
+      <div class="input-wrapper">
+        <span class="text">Tags</span>
+        <select class="text input" [(ngModel)]="selected"
+                (change)='onOptionsSelected($event)'>
+          <option name="tagIds" *ngFor="let tag of tags" [value]="tag.id" [(ngModel)]="selected">{{tag?.name}}</option>
+        </select>
+      </div>
+      <div class="input-wrapper">
+        <span class="text">Description</span>
+        <input type="text" class="input" style="height: 130px;" name="description" [(ngModel)]="certificate.description">
+      </div>
+    </div>
+    <div style="transform: translate(-382px, 273px);">
+      <button type="submit" class="button text" style="background-color: #fcfcfc; border: 2px solid gray;">Back</button>
+      <button type="submit" class="button text" style="background-color: #6fd098; color: #e6ebf1; border-color: transparent;" (click)="createCertificate()">Save</button>
+    </div>
+  </form>
+</div>
