@@ -1,0 +1,41 @@
+<div class="body">
+<div class="register-form">
+  <div class="register-head-block">
+    <a class="text" style="color: #e6ebf1; font-size: x-large;">Register</a>
+  </div>
+  <form class="input-form">
+    <div>
+      <div class="input-wrapper">
+        <a class="text" >First name</a>
+        <input type="text" name="name" class="input" [(ngModel)]="user.name">
+      </div>
+      <div class="input-wrapper">
+        <a class="text">Last name</a>
+        <input type="text" name="surname" class="input" [(ngModel)]="user.surname">
+      </div>
+    </div>
+    <div>
+      <div class="input-wrapper">
+        <a class="text">Password</a>
+        <input type="text" name="password" class="input" [(ngModel)]="user.password">
+      </div>
+      <div class="input-wrapper">
+        <a class="text">Repeat password</a>
+        <input type="text" class="input" [(ngModel)]="user.repeatPassword">
+      </div>
+    </div>
+    <div>
+      <div class="input-wrapper">
+        <a class="text">Email</a>
+        <input type="text" class="input" name="email" [(ngModel)]="user.email">
+      </div>
+    </div>
+    <div class="button-block-wrapper">
+      <button type="submit" class="button text" style="background-color: #fcfcfc; border: 2px solid gray;">Cancel</button>
+      <button type="submit" class="button text" style="background-color: #6fd098; color: #e6ebf1; border-color: transparent;" (click)="Register()">Sign up</button>
+    </div>
+  </form>
+</div>
+</div>
+
+

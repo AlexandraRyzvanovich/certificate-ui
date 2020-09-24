@@ -5,8 +5,8 @@
         <h1 class="h1">Logo</h1>
       </div>
     </div>
-    <input class="input text" type="text" name="email" [(ngModel)]="username" placeholder="Login">
-    <input class="input text" name="password" type="text" [(ngModel)]="password" placeholder="Password">
+    <input class="input text" type="text" name="email" [(ngModel)]="user.email" placeholder="Login">
+    <input class="input text" name="password" type="text" [(ngModel)]="user.password" placeholder="Password">
     <button class="button text" type="submit" (click)="Login()">Login</button>
   </form>
 </div>

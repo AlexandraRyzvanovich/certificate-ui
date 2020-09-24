@@ -1,7 +1,5 @@
 import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
-import {LoginService} from '../services/login.service';
-import {Observable} from 'rxjs';
-import {Login} from './login';
+import {LoginService} from '../services/login/login.service';
 
 @Component({
   selector: 'app-login',
@@ -11,15 +9,19 @@ import {Login} from './login';
 
 })
 export class LoginComponent implements OnInit {
-  username = '';
-  password = '';
+  user: { password: string; email: string } = {
+    email: '',
+    password: ''
+  };
 
   constructor( private authService: LoginService) { }
+  // tslint:disable-next-line:typedef
   Login(){
     console.log('you are logging in');
-    this.authService.login(this.username, this.password);
+    this.authService.login(this.user.email, this.user.password);
   }
 
     ngOnInit(): void {
+    this.Login();
   }
 }
