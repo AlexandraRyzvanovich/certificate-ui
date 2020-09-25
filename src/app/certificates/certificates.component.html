@@ -20,9 +20,10 @@
         </div>
         <div class="block-bottom">
           <span class="text cert-price">{{cert?.price}} $</span>
-          <button class="button text">Add to cart</button>
+          <button class="button text" (click)="addCertificateToCart(cert.name, cert.id)">Add to cart</button>
         </div>
       </div>
     </div>
   </div>
 </div>
+

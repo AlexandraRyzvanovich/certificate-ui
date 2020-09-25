@@ -31,4 +31,9 @@ export class CertificateService {
         this.router.navigate(['certificates']);
       });
   }
+
+  // tslint:disable-next-line:typedef
+  addCertificateToCart(certificateName: string, certificateId: number) {
+    localStorage.setItem(certificateName, String(certificateId));
+  }
 }

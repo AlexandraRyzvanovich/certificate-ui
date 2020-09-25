@@ -2,18 +2,23 @@
   <div class="main-wrapper">
     <div class="block-left">
       <div class="square"></div>
-      <span class="text" style="padding-top: 24px;">Item detailed description</span>
-      <span class="text">Description Description Description Description Description Description Description Description</span>
     </div>
     <div class="block-right">
-      <span class="text">Certificate name</span>
-      <span class="text">Description Description Description Description Description Description Description Description</span>
-      <span class="text">Time left to buy</span>
-      <span class="text">12 days 2 hours</span>
+      <span class="text" style="font-size:xx-large">Certificate name</span>
+      <span class="text" style="font-size: large; padding-top: 14px;">Description Description Description Description Description Description Description Description</span>
+      <div class="time">
+      <span class="text" style="font-size: large">Time left to buy</span>
+      <span class="text" style="font-size: large; color: #6fd098">12 days 2 hours</span>
+      </div>
       <div class="block-right-bottom">
-        <span>235$</span>
-        <a href="">Add to cart</a>
-        <img src="../views/img/shopping_cart-24px.svg">
+        <div style="display: flex">
+        <span class="text" style="padding-right: 36px; font-size: large">Price</span>
+        <span style="font-size: large">235$</span>
+        </div>
+        <div style="display: flex">
+          <button class="button text" (click)="addCertificateToCart(cert.name, cert.id)">Add to cart</button>
+        <img src="./assets/shopping_cart-24px.svg">
+        </div>
       </div>
     </div>
   </div>

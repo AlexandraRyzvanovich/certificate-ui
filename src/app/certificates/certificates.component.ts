@@ -10,10 +10,13 @@ import {CertificateService} from '../services/certificate/certificate.service';
 })
 export class CertificatesComponent implements OnInit {
   certificates: Certificate[] = [];
-  selected: number;
 
   constructor(private certificateService: CertificateService) { }
+
   // tslint:disable-next-line:typedef
+  addCertificateToCart(certificateName: string, certificateId: number) {
+    this.certificateService.addCertificateToCart(certificateName, certificateId);
+  }
 
 
   ngOnInit(): void {
