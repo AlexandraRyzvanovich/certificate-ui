@@ -8,5 +8,5 @@ export interface Certificate{
   creationDate: object;
   modificationDate: object;
   validDays: number;
-  tagIds: Tag[];
+  tags: Tag[];
 }

@@ -15,6 +15,9 @@ import { CertificatesComponent } from './certificates/certificates.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { TagCreationFormComponent } from './tag-creation-form/tag-creation-form.component';
 import { MenuComponent } from './shared/menu/menu.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [
@@ -36,7 +39,10 @@ import { MenuComponent } from './shared/menu/menu.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatChipsModule,
+    MatAutocompleteModule
   ],
   providers: [],
   bootstrap: [AppComponent]

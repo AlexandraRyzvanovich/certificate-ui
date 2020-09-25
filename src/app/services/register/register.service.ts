@@ -15,7 +15,7 @@ export class RegisterService {
 
       this.http.post(this.api + '/signup', {email, name, surname, password})
         .subscribe((resp: Status) => {
-          this.router.navigate(['profile']);
+          this.router.navigate(['login']);
         });
 
   }
