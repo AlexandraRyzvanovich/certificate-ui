@@ -7,7 +7,7 @@
       <input type="text" class="search-input text" placeholder="Search by item name"/>
       <select class="text search-select">
         <option selected class="text">All categories</option>
-        <option class="text" *ngFor="let tag of tags">{{tag?.name}}</option>
+        <option class="text" *ngFor="let tag of tags" name="tagName" (select)="tag ">{{tag?.name}}</option>
       </select>
     </div>
     <div class="right-side">

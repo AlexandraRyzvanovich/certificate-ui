@@ -1,0 +1,25 @@
+<div class="body" >
+  <div class="main-wrapper">
+    <div class="block-left">
+      <div class="square"></div>
+    </div>
+    <div class="block-right">
+      <span class="text" style="font-size:xx-large">{{certificate.name}}</span>
+      <span class="text" style="font-size: large; padding-top: 14px;">{{certificate.description}}</span>
+      <div class="time">
+        <span class="text" style="font-size: large"></span>
+        <span class="text" style="font-size: large; color: #6fd098">{{certificate.endDate}}</span>
+      </div>
+      <div class="block-right-bottom">
+        <div style="display: flex">
+        <span class="text" style="padding-right: 36px; font-size: large">Price</span>
+        <span style="font-size: large">{{certificate.price}} $</span>
+        </div>
+        <div style="display: flex">
+          <button class="button text" (click)="addCertificateToCart(certificate.name, certificate.id)">Add to cart</button>
+        <img src="../../../assets/shopping_cart-24px.svg">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

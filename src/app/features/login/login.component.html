@@ -1,0 +1,22 @@
+<div class="login" xmlns="http://www.w3.org/1999/html">
+   <form [formGroup]="loginForm" class="form">
+    <div class="round-wrapper">
+      <div class="round">
+        <h1 class="h1" style="font-family: cursive;
+    color: white;
+    margin: 22px;
+    font-size: xxx-large;
+    padding-top: 26px;">Logo</h1>
+      </div>
+    </div>
+    <input formControlName="email" class="input text" type="text" name="email" placeholder="Email">
+     <div *ngIf="_email.invalid && (_email.touched || _email.dirty)">
+       <span class="error-message" *ngIf="_email.errors?.required">Field is required</span>
+     </div>
+    <input formControlName="password" class="input text" name="password" type="text" placeholder="Password">
+     <div *ngIf="_password.invalid && (_password.touched || _password.dirty)">
+       <span class="error-message" *ngIf="_password.errors?.required">Field is required</span>
+     </div>
+     <button class="button text" type="submit" (click)="Login()">Login</button>
+  </form>
+</div>

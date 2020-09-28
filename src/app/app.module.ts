@@ -1,48 +1,25 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-import { AppComponent } from './app.component';
-import { HeaderComponent } from './shared/header/header.component';
-import { LoginComponent } from './login/login.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {AppComponent} from './app.component';
+import {CoreModule} from './core/core.module';
+import {FeaturesModule} from './features/features.module';
 import {AppRoutingModule} from './app-routing.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
-import { RegisterComponent } from './register/register.component';
-import { CertificateFormComponent } from './certificate-form/certificate-form.component';
-import { CertificateCreationFormComponent } from './certificate-creation-form/certificate-creation-form.component';
-import { CertificatesComponent } from './certificates/certificates.component';
-import { CheckoutComponent } from './checkout/checkout.component';
-import { TagCreationFormComponent } from './tag-creation-form/tag-creation-form.component';
-import { MenuComponent } from './shared/menu/menu.component';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatChipsModule} from '@angular/material/chips';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {StoreModule} from '@ngrx/store';
+import {SharedModule} from './shared/shared.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HeaderComponent,
-    LoginComponent,
-    CheckoutComponent,
-    RegisterComponent,
-    CertificateFormComponent,
-    CertificateCreationFormComponent,
-    CertificatesComponent,
-    TagCreationFormComponent,
-    MenuComponent
+    AppComponent
 
   ],
   imports: [
+    CoreModule,
+    FeaturesModule,
+    SharedModule,
     BrowserModule,
-    FormsModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatChipsModule,
-    MatAutocompleteModule
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
