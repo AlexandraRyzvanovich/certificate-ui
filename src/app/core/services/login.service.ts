@@ -17,11 +17,10 @@ export class LoginService {
     const body = { username, password };
     this.http.post(this.api + '/login', body).subscribe((resp: any) => {
 
-      /*this.router.navigate(['profile']);*/
       localStorage.setItem('token', resp.token);
-      localStorage.setItem('role', resp.role);
-      this.router.navigate(['/certificates']);
+      localStorage.setItem('id', resp.id);
 
+      this.router.navigate(['/search-certificates']);
     });
   }
 

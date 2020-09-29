@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {CertificateService} from '../../core/services/certificate.service';
-import {Certificate} from '../../model/certificate';
+import {CertificateService} from '../../../core/services/certificate.service';
+import {Certificate} from '../../../model/certificate';
 
 @Component({
   selector: 'app-certificate-form',
   templateUrl: './certificate-form.component.html',
-  styleUrls: ['./certificate-form.component.scss', '../../app.component.scss']
+  styleUrls: ['./certificate-form.component.scss', '../../../app.component.scss']
 })
 export class CertificateFormComponent implements OnInit {
   id: number = Number(localStorage.getItem('certificate-details'));

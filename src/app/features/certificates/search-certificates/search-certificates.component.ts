@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, ElementRef, HostListener, OnInit, QueryList, ViewChild, ViewChildren} from '@angular/core';
-import {CertificateService} from '../../core/services/certificate.service';
-import {Certificate} from '../../model/certificate';
+import {CertificateService} from '../../../core/services/certificate.service';
+import {Certificate} from '../../../model/certificate';
 import {BehaviorSubject, Observable, Subscription} from 'rxjs';
 import {CollectionViewer} from '@angular/cdk/collections';
 import {ActivatedRoute} from '@angular/router';
@@ -8,11 +8,11 @@ import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-certificates',
-  templateUrl: './certificates.component.html',
-  styleUrls: ['./certificates.component.scss', '../../app.component.scss'],
+  templateUrl: './search-certificates.component.html',
+  styleUrls: ['./search-certificates.component.scss', '../../../app.component.scss'],
 })
 
-export class CertificatesComponent implements OnInit {
+export class SearchCertificatesComponent implements OnInit {
   certificates: Certificate[] = [];
 
   constructor(private certificateService: CertificateService,

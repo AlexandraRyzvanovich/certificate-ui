@@ -14,7 +14,7 @@ export class RegisterService {
   register(body: any) {
     console.log(body);
     return this.http.post(this.api + '/signup', body).subscribe(resp => {
-      this.router.navigate(['/certificates']);
+      this.router.navigate(['/search-certificates']);
     });
   }
 }

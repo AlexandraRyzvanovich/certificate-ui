@@ -19,11 +19,11 @@ export class AdminGuard implements CanActivate {
             if (role === 'ROLE_ADMIN') {
                 return true;
             } else {
-                this.router.navigateByUrl('/certificates');
+                this.router.navigateByUrl('/search-certificates');
                 return false;
             }
         } else {
-            this.router.navigateByUrl('/certificates');
+            this.router.navigateByUrl('/search-certificates');
             return false;
         }
     }

@@ -1,7 +1,7 @@
 import {Component, ElementRef, forwardRef, OnInit, ViewChild} from '@angular/core';
-import {TagService} from '../../core/services/tag.service';
-import {Tag} from '../../model/tag';
-import {CertificateService} from '../../core/services/certificate.service';
+import {TagService} from '../../../core/services/tag.service';
+import {Tag} from '../../../model/tag';
+import {CertificateService} from '../../../core/services/certificate.service';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {FormControl} from '@angular/forms';
 import {MatAutocompleteSelectedEvent, MatAutocomplete} from '@angular/material/autocomplete';
@@ -12,7 +12,7 @@ import {map, startWith} from 'rxjs/operators';
 @Component({
   selector: 'app-certificate-creation-form',
   templateUrl: './certificate-creation-form.component.html',
-  styleUrls: ['./certificate-creation-form.component.scss', '../../app.component.scss'],
+  styleUrls: ['./certificate-creation-form.component.scss', '../../../app.component.scss'],
   providers: [TagService, CertificateService
   ]
 })

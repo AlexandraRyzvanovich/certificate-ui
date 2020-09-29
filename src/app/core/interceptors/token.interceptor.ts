@@ -18,8 +18,7 @@ export class TokenInterceptor implements HttpInterceptor {
     const token: string = this.loginService.getToken();
     request = request.clone({
       setHeaders: {
-        'Authorization': `Bearer_${token != null ? token : ''}`,
-        'Content-Type': 'application/json'
+        'Authorization': `Bearer ${token != null ? token : ''}`
       }
     });
     return next.handle(request);

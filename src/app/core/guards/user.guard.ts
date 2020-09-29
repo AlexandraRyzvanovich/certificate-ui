@@ -19,13 +19,12 @@ export class UserGuard implements CanActivate {
             if (role === 'ROLE_USER') {
                 return true;
             } else {
-                this.router.navigateByUrl('/certificates');
+                this.router.navigateByUrl('/search-certificates');
                 return false;
             }
         } else {
-            this.router.navigateByUrl('/certificates');
+            this.router.navigateByUrl('/search-certificates');
             return false;
         }
     }
-
 }
