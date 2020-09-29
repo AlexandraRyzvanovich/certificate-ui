@@ -9,10 +9,6 @@ import {LoginService} from '../../core/services/login.service';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  user: { password: string; email: string } = {
-    email: '',
-    password: ''
-  };
 
   constructor(private loginService: LoginService,
               private formBuilder: FormBuilder,

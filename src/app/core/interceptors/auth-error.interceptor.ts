@@ -12,12 +12,12 @@ export class ErrorInterceptor implements HttpInterceptor {
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         return next.handle(request).pipe(
             catchError((response: any) => {
-                if (response instanceof HttpErrorResponse && response.status === 401) {
+                if (response instanceof HttpErrorResponse && response.status === 403) {
                     localStorage.removeItem('token');
                     this.router.navigateByUrl('/login');
                 }
                 return throwError(response);
             })
-        )
+        );
     }
 }

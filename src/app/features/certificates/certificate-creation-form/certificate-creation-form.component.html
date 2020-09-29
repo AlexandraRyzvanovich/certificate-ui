@@ -2,15 +2,25 @@
   <div class="form-head text">
     <a class="text" style="font-size: x-large; color: white">Add new certificate</a>
   </div>
-  <form class="input-form">
+  <form class="input-form" [formGroup]="certificateCreationForm">
     <div class="column-wrapper">
       <div class="input-wrapper">
         <span class="text">Certificate name</span>
-        <input type="text" class="input" name="name" [(ngModel)]="certificate.name"/>
+        <input type="text" class="input" name="name" formControlName="certificateName"/>
+        <div *ngIf="_certificateName.invalid && (_certificateName.touched || _certificateName.dirty)">
+          <span class="error-message" *ngIf="_certificateName.errors?.required">Field is required</span>
+          <span class="error-message" *ngIf="_certificateName.errors?.minLength">Min length 3 characters</span>
+          <span class="error-message" *ngIf="_certificateName.errors?.maxLength">Max length 100 characters</span>
+        </div>
       </div>
       <div class="input-wrapper">
         <span class="text">Price</span>
-        <input type="text" class="input" name = "price" [(ngModel)]="certificate.price"/>
+        <input type="number" class="input" name = "price" formControlName="price"/>
+        <div *ngIf="_price.invalid && (_price.touched || _price.dirty)">
+          <span class="error-message" *ngIf="_price.errors?.required">Field is required</span>
+          <span class="error-message" *ngIf="_price.errors?.min">Min = 1$</span>
+          <span class="error-message" *ngIf="_price.errors?.max">Max = 10000$</span>
+        </div>
       </div>
       <div class="input-wrapper"><span class="text">Tags</span>
         <mat-form-field class="mat-form">
@@ -43,12 +53,22 @@
     <div class="column-wrapper">
       <div class="input-wrapper">
         <span class="text">Valid days</span>
-        <input type="number" class="input" name="validDays" [(ngModel)]="certificate.validDays">
+        <input type="number" class="input" name="validDays" formControlName="validDays">
+        <div *ngIf="_validDays.invalid && (_validDays.touched || _validDays.dirty)">
+          <span class="error-message" *ngIf="_validDays.errors?.required">Field is required</span>
+          <span class="error-message" *ngIf="_validDays.errors?.min">Min = 1</span>
+          <span class="error-message" *ngIf="_validDays.errors?.max">Max = 365</span>
+        </div>
       </div>
       <div class="input-wrapper">
         <span class="text">Description</span>
         <label>
-          <input type="text" class="input" style="height: 130px;" name="description" [(ngModel)]="certificate.description">
+          <input type="text" class="input" style="height: 130px;" name="description" formControlName="certificateDescription">
+          <div *ngIf="_certificateDescription.invalid && (_certificateDescription.touched || _certificateDescription.dirty)">
+            <span class="error-message" *ngIf="_certificateDescription.errors?.required">Field is required</span>
+            <span class="error-message" *ngIf="_certificateDescription.errors?.minLength">Min length 1 character</span>
+            <span class="error-message" *ngIf="_certificateDescription.errors?.maxLength">Max length 1000 character</span>
+          </div>
         </label>
       </div>
     </div>
