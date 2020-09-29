@@ -6,6 +6,8 @@ import {map} from 'rxjs/operators';
 import {Certificate} from '../../model/certificate';
 import {Status} from 'tslint/lib/runner';
 import {Tag} from '../../model/tag';
+import {CertificateParams} from '../../features/certificates/certificate-update-page/certificate-update-page.component';
+import {SearchParams} from '../../features/certificates/search-certificates/search-certificates.component';
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +19,8 @@ export class CertificateService {
   constructor(private http: HttpClient, private router: Router) {
   }
 
-  getCertificates(): Observable<Certificate[]> {
-    return this.http.get<Certificate[]>(this.api + '?size=10&page=1').pipe(map(data => {
+  getCertificates(page: number, searchParams: SearchParams): Observable<Certificate[]> {
+    return this.http.get<Certificate[]>(this.api + '?size=10&page=' + page).pipe(map(data => {
       const certificates = data['items'].content;
       // tslint:disable-next-line:only-arrow-functions typedef
       return certificates.map(function(cert: any) {
@@ -55,5 +57,11 @@ export class CertificateService {
       const cert = data;
       return cert;
     }));
+  }
+  // tslint:disable-next-line:typedef
+  updateCertificate(id: number, certificateParams: CertificateParams) {
+    this.http.post(this.api + id, certificateParams).subscribe((resp: Status) => {
+      this.router.navigate(['certificates']);
+    });
   }
 }

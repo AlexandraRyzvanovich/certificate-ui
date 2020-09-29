@@ -51,12 +51,12 @@ const routes: Routes = [
       {
         path: 'create',
         component: CertificateCreatePageComponent,
-        canActivate: [AdminGuard]
+        // canActivate: [AdminGuard]
       },
       {
-        path: 'update',
+        path: ':id/update',
         component: CertificateUpdatePageComponent,
-        canActivate: [AdminGuard]
+        // canActivate: [AdminGuard]
       }
     ]
   },

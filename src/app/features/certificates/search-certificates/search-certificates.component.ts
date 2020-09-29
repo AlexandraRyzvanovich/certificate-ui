@@ -1,72 +1,77 @@
 import {
-  AfterViewInit,
   Component,
-  ElementRef,
-  HostListener,
+  HostListener, OnDestroy,
   OnInit,
-  ViewChild,
 } from '@angular/core';
 import {CertificateService} from '../../../core/services/certificate.service';
-import {Certificate} from '../../../model/certificate';
 import {ActivatedRoute} from '@angular/router';
-import {debounce} from 'rxjs/operators';
+import {Certificate} from '../../../model/certificate';
+import {Subscription} from 'rxjs';
+import {MatDialog} from '@angular/material/dialog';
 
+export interface SearchParams {
+  text: string;
+  tag: string;
+}
 @Component({
   selector: 'app-certificates',
   templateUrl: './search-certificates.component.html',
   styleUrls: ['./search-certificates.component.scss', '../../../app.component.scss'],
 })
 
-export class SearchCertificatesComponent implements OnInit, AfterViewInit {
+export class SearchCertificatesComponent implements OnInit, OnDestroy {
 
-  constructor(private certificateService: CertificateService,
-              private route: ActivatedRoute) {
-  }
+  public certificates: Certificate[] = [];
+  public isAuth: boolean;
+  private cSub: Subscription;
+  private currentPage = 1;
+  private byCertificateName = '';
+  private byTagName = [];
+  private certificateNameElement: HTMLInputElement;
+  private tagNameElement: HTMLInputElement;
+  private searchParams: SearchParams;
 
-  @ViewChild('scrollframe') scrollFrame: ElementRef;
-  certificates: Certificate[] = [];
-  private scrollContainer: any;
-  loading = false;
-  private currentPage: number;
-  private debounceCertificateLoading = debounce(() => {
-    if (this.isEndOfPage() && !this.loading) {
-      this.loading = true;
-      setTimeout(() => {
-        this.currentPage = this.currentPage + 1;
-        this.certificates = this.certificates.concat(this.certificateService.getCertificates(this.currentPage));
-        this.loading = false;
-      }, 200);
-    }
-  }, 100);
-
-  ngAfterViewInit(): void {
-    this.scrollContainer = this.scrollFrame.nativeElement;
-  }
-
-  // tslint:disable-next-line:typedef
-  addCertificateToCart(certificateName: string, certificateId: number) {
-    this.certificateService.addCertificateToCart(certificateName, certificateId);
-  }
-
-  // tslint:disable-next-line:typedef
-  getCertificateDetails(id: number) {
-    this.certificateService.getCertificateDetailsComponent(id);
-  }
-
-  @HostListener('mousewheel', ['$event']) onMousewheel(event) {
-    this.debounceCertificateLoading();
-  }
-
-  isEndOfPage() {
-    const coords = this.scrollContainer.getBoundingClientRect();
-    const windowHeight = document.documentElement.clientHeight;
-    return coords.bottom - 10 < windowHeight && coords.bottom > 0;
+  constructor(private certificateService: CertificateService
+              ) {
   }
 
   ngOnInit(): void {
-    this.currentPage = 1;
-    this.loading = true;
-    this.certificates = this.certificateService.getCertificates(this.currentPage);
-    this.loading = false;
+    this.cSub = this.certificateService.getCertificates(this.currentPage++, this.searchParams)
+      .subscribe(data => this.certificates = data);
+  }
+  ngOnDestroy(): void {
+    if (this.cSub) {
+      this.cSub.unsubscribe();
+    }
+  }
+  private loadCertificates(): void {
+    this.cSub = this.certificateService.getCertificates(this.currentPage++, this.searchParams)
+      .subscribe(data => {
+        this.certificates = this.certificates.concat(data);
+      });
+  }
+  @HostListener('window:scroll', [])
+  public loadCertificatesAfterScroll(): void {
+    if (window.pageYOffset + document.documentElement.clientHeight === document.documentElement.scrollHeight) {
+      this.loadCertificates();
+    }
+  }
+
+  @HostListener('window:input', ['$event'])
+  public search(event: Event): void {
+    setTimeout(() => {
+      const element = (event.target as HTMLInputElement);
+      if (element.type === 'search') {
+        this.searchParams.tag = element.value;
+        this.searchParams.text = element.value;
+      }
+      if (element.type === 'select-one') {
+        this.tagNameElement = element;
+        this.byTagName = [element.value];
+      }
+      this.currentPage = 0;
+      this.certificates = [];
+      this.loadCertificates();
+    }, 1000);
   }
 }
