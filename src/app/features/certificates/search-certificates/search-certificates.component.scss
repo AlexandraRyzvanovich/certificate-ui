@@ -2,7 +2,7 @@
   list-style: none;
   flex: 24%;
   padding: 10px;
-  max-width: 290px;
+  width: 290px;
   opacity:0;
   transition: 2s;
   animation: show 1s 1;
@@ -19,7 +19,7 @@
   margin: auto;
 }
 .img-main{
-  width: 100%;
+  width: 270px;
   height: 400px;
 }
 .description-form {

@@ -16,7 +16,7 @@ export interface SearchParams {
 @Component({
   selector: 'app-certificates',
   templateUrl: './search-certificates.component.html',
-  styleUrls: ['./search-certificates.component.scss', '../../../app.component.scss'],
+  styleUrls: ['./search-certificates.component.scss'],
 })
 
 export class SearchCertificatesComponent implements OnInit, OnDestroy {
@@ -69,7 +69,7 @@ export class SearchCertificatesComponent implements OnInit, OnDestroy {
         this.tagNameElement = element;
         this.byTagName = [element.value];
       }
-      this.currentPage = 0;
+      this.currentPage = 1;
       this.certificates = [];
       this.loadCertificates();
     }, 1000);
