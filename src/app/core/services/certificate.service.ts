@@ -45,8 +45,8 @@ export class CertificateService {
 
   // tslint:disable-next-line:typedef
   getCertificateDetailsComponent(id: number) {
-    localStorage.setItem('certificate-details', String(id));
-    this.router.navigate(['certificate-details/' + id]);
+    localStorage.setItem('certificate-details-page', String(id));
+    this.router.navigate(['certificate-details-page/' + id]);
   }
 
   // tslint:disable-next-line:typedef

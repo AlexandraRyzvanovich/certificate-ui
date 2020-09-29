@@ -7,10 +7,10 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {LoginComponent} from './login/login.component';
-import {CertificateFormComponent} from './certificates/certificate-form/certificate-form.component';
+import {CertificateDetailsPageComponent} from './certificates/certificate-details-page/certificate-details-page.component';
 import {SearchCertificatesComponent} from './certificates/search-certificates/search-certificates.component';
 import {RegisterComponent} from './register/register.component';
-import {CertificateCreationFormComponent} from './certificates/certificate-creation-form/certificate-creation-form.component';
+import {CertificateCreatePageComponent} from './certificates/certificate-create-page/certificate-create-page.component';
 import {SharedModule} from '../shared/shared.module';
 import {MatIconModule} from '@angular/material/icon';
 import {CheckoutComponent} from './checkout/checkout.component';
@@ -19,19 +19,23 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
 import { OrderComponent } from './orders/order-component/order.component';
 import { OrdersPageComponent } from './orders/orders-page/orders-page.component';
 import { OrderDetailsPageComponent } from './orders/order-details-page/order-details-page.component';
+import { CertificateComponentComponent } from './certificates/certificate-component/certificate-component.component';
+import { CertificateUpdatePageComponent } from './certificates/certificate-update-page/certificate-update-page.component';
 
 @NgModule({
   declarations: [
     SearchCertificatesComponent,
-    CertificateFormComponent,
+    CertificateDetailsPageComponent,
     LoginComponent,
     RegisterComponent,
-    CertificateCreationFormComponent,
+    CertificateCreatePageComponent,
     CheckoutComponent,
     TagCreationFormComponent,
     OrderComponent,
     OrdersPageComponent,
-    OrderDetailsPageComponent
+    OrderDetailsPageComponent,
+    CertificateComponentComponent,
+    CertificateUpdatePageComponent
   ],
   imports: [
     MatAutocompleteModule,

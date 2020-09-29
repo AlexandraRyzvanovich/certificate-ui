@@ -1,29 +1,7 @@
 <div class="body">
 <app-menu></app-menu>
   <div id="certificates" class="form-all">
-    <div class="block" *ngFor="let cert of certificates">
-      <div style="overflow: hidden;   border: grey 2px solid;" (click)="getCertificateDetails(cert.id)">
-        <img src="../../../../assets/eco-24px.svg" class="animation-img  img-main" >
-      </div>
-      <div class=" description-form">
-        <div>
-          <div class="block-top" >
-            <span class="text cert-name" style="width: 90%; text-align: start;">{{cert.name }}</span>
-            <img style="align-self: flex-end; width: 10%" src="../../../../assets/favorite-24px.svg">
-          </div>
-          <div class="block-description" style="    width: 100%;">
-            <span class="text cert-description" style="width: 100%">{{cert?.description}}</span>
-          </div>
-          <div class="line" style="width: 90%; margin: 8px;">
-            <div style="background-color: black; padding: 2px;"></div>
-          </div>
-        </div>
-        <div class="block-bottom">
-          <span class="text cert-price">{{cert?.price}} $</span>
-          <button class="button text" (click)="addCertificateToCart(cert.name, cert.id)">Add to cart</button>
-        </div>
-      </div>
-    </div>
+
   </div>
 </div>
 

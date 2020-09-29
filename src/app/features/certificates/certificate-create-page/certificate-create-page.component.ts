@@ -11,12 +11,12 @@ import {map, startWith} from 'rxjs/operators';
 
 @Component({
   selector: 'app-certificate-creation-form',
-  templateUrl: './certificate-creation-form.component.html',
-  styleUrls: ['./certificate-creation-form.component.scss', '../../../app.component.scss'],
+  templateUrl: './certificate-create-page.component.html',
+  styleUrls: ['./certificate-create-page.component.scss', '../../../app.component.scss'],
   providers: [TagService, CertificateService
   ]
 })
-export class CertificateCreationFormComponent implements OnInit {
+export class CertificateCreatePageComponent implements OnInit {
   certificateCreationForm: FormGroup;
   allTags: Tag[] = [];
   visible = true;
