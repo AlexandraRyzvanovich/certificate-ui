@@ -10,7 +10,6 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./certificate-details-page.component.scss', '../../../app.component.scss']
 })
 export class CertificateDetailsPageComponent implements OnInit {
-  id: number = Number(localStorage.getItem('certificate-details-page'));
   certificate: Certificate = null;
 
 

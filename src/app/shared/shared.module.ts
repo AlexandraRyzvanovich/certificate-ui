@@ -9,9 +9,9 @@ import {MenuComponent} from './menu/menu.component';
     HeaderComponent,
     MenuComponent
   ],
-  imports: [
-    CommonModule
-  ],
+    imports: [
+        CommonModule
+    ],
   exports: [
     HeaderComponent,
     MenuComponent

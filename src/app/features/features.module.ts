@@ -35,7 +35,7 @@ import { CertificateUpdatePageComponent } from './certificates/certificate-updat
     OrdersPageComponent,
     OrderDetailsPageComponent,
     CertificateComponentComponent,
-    CertificateUpdatePageComponent
+    CertificateUpdatePageComponent,
   ],
   imports: [
     MatAutocompleteModule,
@@ -50,6 +50,8 @@ import { CertificateUpdatePageComponent } from './certificates/certificate-updat
     MatIconModule,
     ScrollingModule
   ],
+  exports: [
+  ]
 })
 export class FeaturesModule {
 

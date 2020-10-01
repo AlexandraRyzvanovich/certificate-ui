@@ -50,7 +50,7 @@ export class CertificateCreatePageComponent implements OnInit {
       ],
       certificateDescription: ['', [Validators.required,
         Validators.minLength(5),
-        Validators.maxLength(16)]
+        Validators.maxLength(100)]
       ],
       validDays: ['', [Validators.required,
         Validators.min(1),
