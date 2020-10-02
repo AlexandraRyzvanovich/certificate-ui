@@ -17,8 +17,15 @@ export class TagService {
       const tags = data['items'].content;
       // tslint:disable-next-line:only-arrow-functions typedef
       return tags.map(function(tag: any) {
-        return {name: tag.name, id: tag.id};
+        return {id: tag.id, name: tag.name};
       });
+    }));
+  }
+  getMostPopular(): Observable<Tag[]> {
+    return this.http.get(this.api + '/popular').pipe(map(data => {
+      const tags = data['items'].content;
+      // tslint:disable-next-line:only-arrow-functions
+      return tags;
     }));
   }
 }

@@ -25,14 +25,11 @@ export class SearchCertificatesComponent implements OnInit, OnDestroy {
   public isAuth: boolean;
   private cSub: Subscription;
   private currentPage = 1;
-  private byCertificateName = '';
-  private byTagName = [];
   private certificateNameElement: HTMLInputElement;
   private tagNameElement: HTMLInputElement;
-  private searchParams: SearchParams;
+  private searchParams: SearchParams = { text: '', tag: '' };
 
-  constructor(private certificateService: CertificateService
-              ) {
+  constructor(private certificateService: CertificateService) {
   }
 
   ngOnInit(): void {
@@ -62,12 +59,12 @@ export class SearchCertificatesComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       const element = (event.target as HTMLInputElement);
       if (element.type === 'search') {
-        this.searchParams.tag = element.value;
-        this.searchParams.text = element.value;
+        this.certificateNameElement = element;
+        this.searchParams.text = element.value.toString();
       }
       if (element.type === 'select-one') {
         this.tagNameElement = element;
-        this.byTagName = [element.value];
+        this.searchParams.tag = element.value.toString();
       }
       this.currentPage = 1;
       this.certificates = [];

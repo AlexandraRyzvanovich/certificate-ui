@@ -14,13 +14,23 @@ import {SearchParams} from '../../features/certificates/search-certificates/sear
 })
 
 export class CertificateService {
-  api = 'http://localhost:8080/certificates/';
+  api = 'http://localhost:8080/certificates';
 
   constructor(private http: HttpClient, private router: Router) {
   }
 
   getCertificates(page: number, searchParams: SearchParams): Observable<Certificate[]> {
-    return this.http.get<Certificate[]>(this.api + '?size=10&page=' + page).pipe(map(data => {
+    let httpParams: HttpParams = new HttpParams();
+    if (searchParams.tag !== '') {
+      httpParams = httpParams.set('tags', searchParams.tag);
+    }
+    if (searchParams.text !== '') {
+      httpParams = httpParams.set('text', searchParams.text);
+    }
+
+    httpParams = httpParams.set('size', '10');
+    httpParams = httpParams.set('page', page.toString());
+    return this.http.get<Certificate[]>(this.api, {params: httpParams}).pipe(map(data => {
       const certificates = data['items'].content;
       // tslint:disable-next-line:only-arrow-functions typedef
       return certificates.map(function(cert: any) {
@@ -53,14 +63,15 @@ export class CertificateService {
 
   // tslint:disable-next-line:typedef
   getCertificate(id: number): Observable<Certificate> {
-    return this.http.get<Certificate>(this.api + id).pipe(map(data => {
+    return this.http.get<Certificate>(this.api + '/' + id).pipe(map(data => {
       const cert = data;
       return cert;
     }));
   }
+
   // tslint:disable-next-line:typedef
   updateCertificate(id: number, certificateParams: CertificateParams) {
-    this.http.post(this.api + id, certificateParams).subscribe((resp: Status) => {
+    this.http.post(this.api + '/' + id, certificateParams).subscribe((resp: Status) => {
       this.router.navigate(['certificates']);
     });
   }

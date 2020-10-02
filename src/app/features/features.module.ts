@@ -21,6 +21,7 @@ import { OrdersPageComponent } from './orders/orders-page/orders-page.component'
 import { OrderDetailsPageComponent } from './orders/order-details-page/order-details-page.component';
 import { CertificateComponentComponent } from './certificates/certificate-component/certificate-component.component';
 import { CertificateUpdatePageComponent } from './certificates/certificate-update-page/certificate-update-page.component';
+import { TagComponent } from './tag/tag/tag.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { CertificateUpdatePageComponent } from './certificates/certificate-updat
     OrderDetailsPageComponent,
     CertificateComponentComponent,
     CertificateUpdatePageComponent,
+    TagComponent,
   ],
   imports: [
     MatAutocompleteModule,
@@ -51,6 +53,7 @@ import { CertificateUpdatePageComponent } from './certificates/certificate-updat
     ScrollingModule
   ],
   exports: [
+    TagComponent
   ]
 })
 export class FeaturesModule {
