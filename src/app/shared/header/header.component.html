@@ -8,15 +8,14 @@
     <div class="dropdown-content">
       <a href="/register">Registration</a>
       <a href="/login">Login</a>
-      <a href="/certificates">Certificates</a>
+      <a href="/certificates" >Certificates</a>
       <a href="/create-certificate">Create certificate</a>
-      <a href="/checkout">Cart</a>
+      <a href="/cart">Cart</a>
       <a href="/orders">Orders</a>
       <a href="/users">Users</a>
     </div>
     </div>
-    <span style="font-family: cursive; font-size: large">Logo</span>
-    <div class="search">
+    <div class="search" *ngIf="isCertificatesRoute()">
       <input type="search" class="search-input text" placeholder="Search by item name"/>
       <select class="text search-select">
         <option selected class="text" value="">All categories</option>
@@ -24,15 +23,17 @@
       </select>
     </div>
     <div class="right-side">
-      <a href="/favorite">
-        <img src="./assets/favorite-24px.svg" style="margin-right: 10px;">
-      </a>
       <a href="/checkout">
         <img src="./assets/shopping_cart-24px.svg" style="margin-right: 10px;">
       </a>
+      <div *ngIf="!isAuthentificated()">
       <a href="/login" class="text href" style="margin-right: 10px">Login</a>
       <span class="vl"></span>
       <a href="/register" class="text href">Sign up</a>
+      </div>
+      <div *ngIf="isAuthentificated()">
+        <span (click)="logOut()">Log out</span>
+      </div>
     </div>
   </div>
 </header>

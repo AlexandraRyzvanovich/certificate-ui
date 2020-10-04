@@ -13,7 +13,7 @@ import {RegisterComponent} from './register/register.component';
 import {CertificateCreatePageComponent} from './certificates/certificate-create-page/certificate-create-page.component';
 import {SharedModule} from '../shared/shared.module';
 import {MatIconModule} from '@angular/material/icon';
-import {CheckoutComponent} from './checkout/checkout.component';
+import {CardCertificateComponent} from './card/card-certificate/card-certificate.component';
 import {TagCreationFormComponent} from './tag/tag-creation-form/tag-creation-form.component';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import { OrderComponent } from './orders/order-component/order.component';
@@ -22,6 +22,7 @@ import { OrderDetailsPageComponent } from './orders/order-details-page/order-det
 import { CertificateComponentComponent } from './certificates/certificate-component/certificate-component.component';
 import { CertificateUpdatePageComponent } from './certificates/certificate-update-page/certificate-update-page.component';
 import { TagComponent } from './tag/tag/tag.component';
+import { CardPageComponent } from './card/card-page/card-page.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import { TagComponent } from './tag/tag/tag.component';
     LoginComponent,
     RegisterComponent,
     CertificateCreatePageComponent,
-    CheckoutComponent,
+    CardCertificateComponent,
     TagCreationFormComponent,
     OrderComponent,
     OrdersPageComponent,
@@ -38,6 +39,7 @@ import { TagComponent } from './tag/tag/tag.component';
     CertificateComponentComponent,
     CertificateUpdatePageComponent,
     TagComponent,
+    CardPageComponent,
   ],
   imports: [
     MatAutocompleteModule,

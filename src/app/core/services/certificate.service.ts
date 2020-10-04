@@ -51,8 +51,47 @@ export class CertificateService {
   }
 
   // tslint:disable-next-line:typedef
-  addCertificateToCart(certificateName: string, certificateId: number) {
-    localStorage.setItem(certificateName, String(certificateId));
+  addCertificateToCart(certificate: Certificate) {
+    const userId = localStorage.getItem('id');
+    // tslint:disable-next-line:prefer-const
+    let certs: Certificate[] = this.getCertificateCard();
+    certs.push(certificate);
+    localStorage.removeItem('card' + userId);
+    localStorage.setItem('card' + userId, JSON.stringify(certs));
+  }
+
+  getTotalPrice(): number {
+    const certs: Certificate[] = this.getCertificateCard();
+    let total = 0;
+    certs.forEach(cert => {
+      total += cert.price;
+    });
+    return total;
+  }
+
+
+  removeFromCard(certificate: Certificate): void {
+    const userId = localStorage.getItem('id');
+    const card: Certificate[] = this.getCertificateCard();
+    const certificateFromCard = card.find(elem => elem.id === certificate.id);
+    if (certificateFromCard) {
+        const index = card.findIndex(elem => elem.id === certificateFromCard.id);
+        card.splice(index, 1);
+    }
+    localStorage.removeItem('card' + userId);
+    localStorage.setItem('card' + userId, JSON.stringify(card));
+  }
+
+  getCertificateCard(): Certificate[] {
+    const userId = localStorage.getItem('id');
+    const stringCertificate = localStorage.getItem('card' + userId);
+    let certificates: Certificate[];
+    if (stringCertificate !== null) {
+      certificates = JSON.parse(stringCertificate);
+    } else {
+      certificates = [];
+    }
+    return certificates;
   }
 
   // tslint:disable-next-line:typedef

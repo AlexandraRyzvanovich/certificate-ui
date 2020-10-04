@@ -18,8 +18,8 @@ export class CertificateDetailsPageComponent implements OnInit {
               private router: Router) { }
 
   // tslint:disable-next-line:typedef
-  addCertificateToCart(certificateName: string, certificateId: number) {
-    this.certificateService.addCertificateToCart(certificateName, certificateId);
+  addCertificateToCart(certificate: Certificate) {
+    this.certificateService.addCertificateToCart(certificate);
   }
 
   ngOnInit(): void {

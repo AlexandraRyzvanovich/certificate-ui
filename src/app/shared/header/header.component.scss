@@ -4,6 +4,7 @@
   display: flex;
   align-items: center;
   height: 50px;
+  justify-content: space-between;
 }
 .img {
   place-content: center;
@@ -38,6 +39,7 @@
 }
 .right-side {
   display: flex;
+  padding-right: 10px;
 }
 .href {
   color: #24292e;

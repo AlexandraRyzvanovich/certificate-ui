@@ -1,6 +1,6 @@
 import {
   Component,
-  HostListener, OnDestroy,
+  HostListener, Input, OnDestroy,
   OnInit,
 } from '@angular/core';
 import {CertificateService} from '../../../core/services/certificate.service';
@@ -8,6 +8,8 @@ import {ActivatedRoute} from '@angular/router';
 import {Certificate} from '../../../model/certificate';
 import {Subscription} from 'rxjs';
 import {MatDialog} from '@angular/material/dialog';
+import {Tag} from '../../../model/tag';
+import {TagService} from '../../../core/services/tag.service';
 
 export interface SearchParams {
   text: string;
@@ -28,13 +30,16 @@ export class SearchCertificatesComponent implements OnInit, OnDestroy {
   private certificateNameElement: HTMLInputElement;
   private tagNameElement: HTMLInputElement;
   private searchParams: SearchParams = { text: '', tag: '' };
+  @Input() tags: Tag[];
 
-  constructor(private certificateService: CertificateService) {
+  constructor(private certificateService: CertificateService,
+              private tagService: TagService) {
   }
 
   ngOnInit(): void {
     this.cSub = this.certificateService.getCertificates(this.currentPage++, this.searchParams)
       .subscribe(data => this.certificates = data);
+    this.tagService.getTags().subscribe(data => this.tags = data);
   }
   ngOnDestroy(): void {
     if (this.cSub) {

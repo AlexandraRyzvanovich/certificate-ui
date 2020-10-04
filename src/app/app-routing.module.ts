@@ -4,7 +4,7 @@ import {LoginComponent} from './features/login/login.component';
 import {RegisterComponent} from './features/register/register.component';
 import {CertificateCreatePageComponent} from './features/certificates/certificate-create-page/certificate-create-page.component';
 import {CertificateDetailsPageComponent} from './features/certificates/certificate-details-page/certificate-details-page.component';
-import {CheckoutComponent} from './features/checkout/checkout.component';
+import {CardCertificateComponent} from './features/card/card-certificate/card-certificate.component';
 import {TagCreationFormComponent} from './features/tag/tag-creation-form/tag-creation-form.component';
 import {SearchCertificatesComponent} from './features/certificates/search-certificates/search-certificates.component';
 import {UserGuard} from './core/guards/user.guard';
@@ -13,13 +13,12 @@ import {OrdersPageComponent} from './features/orders/orders-page/orders-page.com
 import {OrderComponent} from './features/orders/order-component/order.component';
 import {OrderDetailsPageComponent} from './features/orders/order-details-page/order-details-page.component';
 import {CertificateUpdatePageComponent} from './features/certificates/certificate-update-page/certificate-update-page.component';
-
-
+import {CardPageComponent} from './features/card/card-page/card-page.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'checkout', component: CheckoutComponent},
+  {path: 'cart', component: CardPageComponent},
   {path: 'create-tag', component: TagCreationFormComponent},
   {path: 'certificates', component: SearchCertificatesComponent},
   {
@@ -28,12 +27,12 @@ const routes: Routes = [
       {
         path: '',
         component: OrdersPageComponent,
-         canActivate: [UserGuard]
+         // canActivate: [UserGuard]
       },
       {
         path: ':id/details',
         component: OrderDetailsPageComponent,
-        canActivate: [UserGuard]
+        // canActivate: [UserGuard]
       },
     ]
   },

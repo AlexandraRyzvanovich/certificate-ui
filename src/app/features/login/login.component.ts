@@ -1,6 +1,6 @@
 import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {LoginService} from '../../core/services/login.service';
+import {AuthService} from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +10,7 @@ import {LoginService} from '../../core/services/login.service';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
-  constructor(private loginService: LoginService,
+  constructor(private loginService: AuthService,
               private formBuilder: FormBuilder,
   ) {
     this.createForm();

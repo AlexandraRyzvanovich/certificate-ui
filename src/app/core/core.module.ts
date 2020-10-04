@@ -7,7 +7,7 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
 import { ErrorInterceptor } from './interceptors/auth-error.interceptor';
 import { AdminGuard } from './guards/admin.guard';
 import { UserGuard } from './guards/user.guard';
-import {LoginService} from './services/login.service';
+import {AuthService} from './services/auth.service';
 
 @NgModule({
   imports: [HttpClientModule],
@@ -29,7 +29,7 @@ export class CoreModule {
     return {
       ngModule: CoreModule,
       providers: [
-        LoginService,
+        AuthService,
         JwtTokenService,
         CertificateService,
         TagService,
