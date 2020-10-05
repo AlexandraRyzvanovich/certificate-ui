@@ -7,6 +7,14 @@
 .form-all{
   display: flex;
   flex-direction: column;
-  width: 80%;
+  width: 50%;
   margin: auto;
+}
+.form-head {
+  height: 82px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  background-color: #c5c5c5;
+  justify-content: center;
 }

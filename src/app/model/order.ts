@@ -4,5 +4,5 @@ export interface Order {
   id: number;
   date: object;
   amount: number;
-  certificate: Certificate;
+  certificates: Certificate[];
 }

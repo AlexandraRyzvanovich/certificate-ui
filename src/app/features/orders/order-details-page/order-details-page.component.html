@@ -1,29 +1,34 @@
 <div class="body">
-  <app-menu></app-menu>
-  <div style="display: flex;
-    justify-content: center;">
-  <form class="form">
-    <div>
-      <img src="../../../../assets/like.svg" style="width: 500px">
+  <div style="    display: flex;
+    justify-content: center;
+    align-items: center;">
+    <div class="text upper-form" style="height: 75px;
+    font-size: x-large;">
+      <span style="padding: 10px;">Order amount: {{order.amount | currency: 'USD'}}</span>
+      <span style="padding: 13px;">Order date: {{order.date | date:'yyyy-MM-dd HH:mm:ss'}}</span>
     </div>
-    <div class="order-info-block">
-      <div style="display: inline-grid;">
-        <span class="text-order">Certificate name:</span>
-        <span class="text-order">{{order.certificate.name}}</span>
+  </div>
+  <div class="text medium-form" style="font-size: x-large;">
+    <span>Certificates</span>
+  </div>
+  <div *ngFor="let cert of certificates">
+  <div style="    display: flex;
+    justify-content: center;
+    align-items: center;" >
+    <div class="text certificates-form">
+      <div>
+        <img style="width: 75px;" src="assets/eco-24px.svg">
       </div>
-      <div style="display: inline-grid;">
-        <span class="text-order">Certificate description</span>
-        <span class="text-order">{{order.certificate.description}}</span>
+      <div>
+        <span>Certificate name: {{cert.name}}</span>
       </div>
-      <div style="display: inline-grid;">
-        <span class="text-order">Date of purchase</span>
-        <span class="text-order">{{order.date}}</span>
+      <div>
+        <span>Certificate description: {{cert.description}}</span>
       </div>
-      <div style="display: inline-grid;">
-        <span class="text-order">Amount paid</span>
-        <span class="text-order">{{order.amount}} $</span>
+      <div>
+        <button class="button text" style="background-color: #6fd098" (click)="addToCart(cert)">Buy again</button>
       </div>
     </div>
-  </form>
+  </div>
   </div>
 </div>

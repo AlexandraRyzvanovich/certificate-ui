@@ -1,14 +1,21 @@
-.form{
+.certificates-form{
+  background-color: #c5c5c5;
   display: flex;
-  width: 80%;
+  width: 65%;
+  flex-direction: row;
+  margin-top: 10px;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 65px;
 }
-.order-info-block{
+.upper-form{
+  background-color: #c5c5c5;
   display: flex;
+  justify-content: center;
+  width: 50%;
   flex-direction: column;
+  margin-bottom: 16px;
 }
-.text-order {
-  text-align: center;
-  font-family: cursive;
-  font-size: xx-large;
-  padding-top: 20px;
+.medium-form{
+
 }

@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {OrderService} from '../../../core/services/order.service';
 import {Order} from '../../../model/order';
+import {Certificate} from '../../../model/certificate';
+import {CertificateService} from '../../../core/services/certificate.service';
 
 @Component({
   selector: 'app-order-details-page',
@@ -10,10 +12,15 @@ import {Order} from '../../../model/order';
 })
 export class OrderDetailsPageComponent implements OnInit {
   order: Order;
+  certificates: Certificate[];
 
   constructor(private route: ActivatedRoute,
               private router: Router,
-              private orderService: OrderService) {
+              private orderService: OrderService,
+              private certificateService: CertificateService) {
+  }
+  addToCart(certificate: Certificate): void {
+    this.certificateService.addCertificateToCart(certificate);
   }
 
   ngOnInit(): void {
@@ -22,7 +29,7 @@ export class OrderDetailsPageComponent implements OnInit {
         const orderId = Number(params.get('id'));
         this.orderService.getOrderInfo(orderId).subscribe((resp: Order) => {
           this.order = resp;
-          this.order.certificate = resp.certificate;
+          this.certificates = resp.certificates;
         });
       });
   }
