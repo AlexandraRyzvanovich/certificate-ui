@@ -3,6 +3,7 @@ import {User} from '../../model/user';
 import {RegisterService} from '../../core/services/register.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Store} from '@ngrx/store';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -14,7 +15,8 @@ export class RegisterComponent {
 
   constructor(
     private registerService: RegisterService,
-    private formBuilder: FormBuilder) {
+    private formBuilder: FormBuilder,
+    private router: Router) {
     this.createForm();
   }
 
@@ -79,6 +81,8 @@ export class RegisterComponent {
       surname: this._surname.value,
     };
     this.registerService.register(payload);
-
+  }
+  back(): void {
+    this.router.navigateByUrl('/login');
   }
 }

@@ -1,23 +1,19 @@
 <div class="body">
   <div class="form-head text">
-    <a class="text" style="font-size: x-large; color: white">Add new certificate</a>
+    <a class="text" style="font-size: x-large; color: white">Edit certificate</a>
   </div>
-  <form class="input-form" [formGroup]="certificateCreationForm">
+  <form class="input-form" [formGroup]="certificateUpdateForm">
     <div class="column-wrapper">
       <div class="input-wrapper">
-        <span class="text">Certificate name</span>
-        <input type="text" class="input" name="name" formControlName="certificateName"/>
+        <input type="text" class="input" name="name" placeholder="{{oldCertificate.name}}" formControlName="certificateName"/>
         <div *ngIf="_certificateName.invalid && (_certificateName.touched || _certificateName.dirty)">
-          <span class="error-message" *ngIf="_certificateName.errors?.required">Field is required</span>
           <span class="error-message" *ngIf="_certificateName.errors?.minLength">Min length 3 characters</span>
           <span class="error-message" *ngIf="_certificateName.errors?.maxLength">Max length 100 characters</span>
         </div>
       </div>
       <div class="input-wrapper">
-        <span class="text">Price</span>
-        <input type="number" class="input" name = "price" formControlName="price"/>
+        <input type="number" class="input" name = "price" placeholder="{{oldCertificate.price}}" formControlName="price"/>
         <div *ngIf="_price.invalid && (_price.touched || _price.dirty)">
-          <span class="error-message" *ngIf="_price.errors?.required">Field is required</span>
           <span class="error-message" *ngIf="_price.errors?.min">Min = 1$</span>
           <span class="error-message" *ngIf="_price.errors?.max">Max = 10000$</span>
         </div>
@@ -52,8 +48,7 @@
     </div>
     <div class="column-wrapper">
       <div class="input-wrapper">
-        <span class="text">Valid days</span>
-        <input type="number" class="input" name="validDays" formControlName="validDays">
+        <input type="number" class="input" name="validDays" placeholder="{{oldCertificate.validDays}}" formControlName="validDays">
         <div *ngIf="_validDays.invalid && (_validDays.touched || _validDays.dirty)">
           <span class="error-message" *ngIf="_validDays.errors?.required">Field is required</span>
           <span class="error-message" *ngIf="_validDays.errors?.min">Min = 1</span>
@@ -61,20 +56,17 @@
         </div>
       </div>
       <div class="input-wrapper">
-        <span class="text">Description</span>
-        <label>
-          <input type="text" class="input" style="height: 130px;" name="description" formControlName="certificateDescription">
+          <input type="text" class="input" style="height: 130px;" name="description" placeholder="{{oldCertificate.description}}" formControlName="certificateDescription">
           <div *ngIf="_certificateDescription.invalid && (_certificateDescription.touched || _certificateDescription.dirty)">
             <span class="error-message" *ngIf="_certificateDescription.errors?.required">Field is required</span>
             <span class="error-message" *ngIf="_certificateDescription.errors?.minLength">Min length 1 character</span>
             <span class="error-message" *ngIf="_certificateDescription.errors?.maxLength">Max length 1000 character</span>
           </div>
-        </label>
       </div>
     </div>
     <div style="transform: translate(-382px, 273px);">
       <button type="submit" class="button text" style="background-color: #fcfcfc; border: 2px solid gray;" (click)="back()">Back</button>
-      <button type="submit" class="button text" style="background-color: #6fd098; color: #e6ebf1; border-color: transparent;" (click)="createCertificate()">Save</button>
+      <button type="submit" class="button text" style="background-color: #6fd098; color: #e6ebf1; border-color: transparent;" (click)="updateCertificate()">Update</button>
     </div>
   </form>
 </div>

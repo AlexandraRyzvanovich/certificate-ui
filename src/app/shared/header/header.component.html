@@ -6,13 +6,13 @@
     <div class="icon"></div>
     <div class="icon"></div>
     <div class="dropdown-content">
-      <a href="/register">Registration</a>
-      <a href="/login">Login</a>
+      <a *ngIf="!isAuthentificated()" href="/register">Registration</a>
+      <a *ngIf="!isAuthentificated()" href="/login">Login</a>
       <a href="/certificates" >Certificates</a>
-      <a href="/create-certificate">Create certificate</a>
+      <a *ngIf="role=='ROLE_ADMIN'" href="/create-certificate">Create certificate</a>
       <a href="/cart">Cart</a>
-      <a href="/orders">Orders</a>
-      <a href="/users">Users</a>
+      <a *ngIf="role=='ROLE_USER'" href="/orders">Orders</a>
+      <a *ngIf="role=='ROLE_ADMIN'" href="/users">Users</a>
     </div>
     </div>
     <div class="search" *ngIf="isCertificatesRoute()">
@@ -23,7 +23,7 @@
       </select>
     </div>
     <div class="right-side">
-      <a href="/checkout">
+      <a href="/cart">
         <img src="./assets/shopping_cart-24px.svg" style="margin-right: 10px;">
       </a>
       <div *ngIf="!isAuthentificated()">

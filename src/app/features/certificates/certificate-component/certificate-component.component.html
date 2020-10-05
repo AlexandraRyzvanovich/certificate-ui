@@ -1,0 +1,20 @@
+<div class="block">
+  <div style="overflow: hidden;   border: grey 2px solid;" (click)="getCertificateDetails(certificate.id)">
+    <img src="../../../../assets/eco-24px.svg" class="animation-img  img-main" >
+  </div>
+  <div class=" description-form">
+    <div>
+      <div class="block-top" >
+        <span class="text cert-name" style="width: 90%; text-align: start;">{{certificate.name}}</span>
+        <img *ngIf="role == 'ROLE_ADMIN'" (click)="getEditCertificatePage(certificate.id)" style="align-self: flex-end; width: 10%" src="../../../../assets/icons8-edit.svg">
+      </div>
+      <div class="line" style="width: 90%; margin: 8px;">
+        <div style="background-color: black; padding: 2px;"></div>
+      </div>
+    </div>
+    <div class="block-bottom">
+      <span class="text cert-price">{{certificate.price}} $</span>
+      <button class="button text" (click)="addCertificateToCard(certificate)">Add to cart</button>
+    </div>
+  </div>
+</div>

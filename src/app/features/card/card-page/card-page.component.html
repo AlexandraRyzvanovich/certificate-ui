@@ -1,0 +1,33 @@
+<div class="body">
+  <div class="form-head text">
+    <a class="text" style="font-size: x-large; color: white">Cart</a>
+  </div>
+  <div class="checkout-form-wrapper">
+    <div class="items-wrapper">
+      <app-card-certificate *ngFor="let certificate of certificatesToBuy" [certificate] = certificate></app-card-certificate>
+      <div *ngIf="certificatesToBuy.length == 0" class="text empty-message">
+        <span style="font-size: x-large;">Your cart is empty</span>
+      </div>
+      <div>
+        <div class="line"></div>
+      </div>
+      <div style="display: flex; justify-content: flex-end">
+        <div class="text" style="padding-right: 60px;">
+          <span>Total</span>
+        </div>
+        <div class="text">
+          <span>{{total}} $</span>
+        </div>
+      </div>
+      <div class="button-block-wrapper">
+        <button type="submit" class="button text"
+                style="background-color: #fcfcfc; border: 2px solid gray; width: 100px; margin-right: 10px;">Back
+        </button>
+        <button type="submit" class="button text"
+                style="background-color: #6fd098; color: #e6ebf1; border-color: transparent; width: 100px;" (click)="openDialog()">Buy
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+

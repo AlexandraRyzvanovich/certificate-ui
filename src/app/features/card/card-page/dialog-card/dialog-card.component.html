@@ -1,0 +1,10 @@
+<div mat-dialog-content>
+  <p>Would you like to buy all certificates?</p>
+  <p>Total price: {{data.total}}</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button class="text button" style="padding-right: 8px;
+    margin-right: 5px;" (click)="onNoClick()">No Thanks</button>
+  <button mat-button class="text button" style="padding-right: 45px; background-color: #6fd098" (click)="onOkClick(data.certificates)" [mat-dialog-close] cdkFocusInitial>Ok</button>
+</div>
+

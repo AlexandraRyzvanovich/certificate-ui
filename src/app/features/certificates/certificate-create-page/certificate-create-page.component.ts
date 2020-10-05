@@ -8,6 +8,7 @@ import {MatAutocompleteSelectedEvent, MatAutocomplete} from '@angular/material/a
 import {MatChipInputEvent} from '@angular/material/chips';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-certificate-creation-form',
@@ -32,7 +33,8 @@ export class CertificateCreatePageComponent implements OnInit {
 
   constructor(private tagService: TagService,
               private certificateService: CertificateService,
-              private formBuilder: FormBuilder) {
+              private formBuilder: FormBuilder,
+              private router: Router) {
     this.filteredTags = this.tagCtrl.valueChanges.pipe(
       startWith(null),
       map((tag: string | null) => {
@@ -120,6 +122,10 @@ export class CertificateCreatePageComponent implements OnInit {
     this.certificateService
       .createCertificate(this._certificateName.value, this._certificateDescription.value,
         this._validDays.value, this._price.value, this.tags);
+  }
+
+  back(): void {
+    this.router.navigateByUrl('/certificates');
   }
 
   ngOnInit(): void {

@@ -1,0 +1,40 @@
+
+.checkout-form-wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90%;
+  flex-direction: column;
+}
+.items-wrapper{
+  display: inline-block;
+  flex-wrap: wrap;
+  width: 50%;
+  background-color: #fcfcfc;
+}
+.line {
+  width: 100%;
+  background-color: grey;
+  padding: 1px;
+  display: flex;
+  align-self: center;
+}
+.button-block-wrapper{
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 20px;
+}
+.empty-message{
+  display: flex;
+  justify-content: center;
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+.form-head {
+  height: 82px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  background-color: #c5c5c5;
+  justify-content: center;
+}

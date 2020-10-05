@@ -17,8 +17,7 @@ export class CertificateDetailsPageComponent implements OnInit {
               private route: ActivatedRoute,
               private router: Router) { }
 
-  // tslint:disable-next-line:typedef
-  addCertificateToCart(certificate: Certificate) {
+  addCertificateToCard(certificate: Certificate): void {
     this.certificateService.addCertificateToCart(certificate);
   }
 

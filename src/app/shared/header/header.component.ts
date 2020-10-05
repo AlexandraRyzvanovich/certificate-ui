@@ -22,10 +22,10 @@ export class HeaderComponent implements OnInit {
               ) {
   }
 
-  isCertificatesRoute() {
+  isCertificatesRoute(): boolean {
     return this.router.url === '/certificates';
   }
-  isAuthentificated() {
+  isAuthentificated(): boolean {
     return this.authService.isAuthenticated();
   }
   logOut() {

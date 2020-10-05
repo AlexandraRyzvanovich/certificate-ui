@@ -23,6 +23,8 @@ import { CertificateComponentComponent } from './certificates/certificate-compon
 import { CertificateUpdatePageComponent } from './certificates/certificate-update-page/certificate-update-page.component';
 import { TagComponent } from './tag/tag/tag.component';
 import { CardPageComponent } from './card/card-page/card-page.component';
+import { DialogCardComponent } from './card/card-page/dialog-card/dialog-card.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,7 @@ import { CardPageComponent } from './card/card-page/card-page.component';
     CertificateUpdatePageComponent,
     TagComponent,
     CardPageComponent,
+    DialogCardComponent,
   ],
   imports: [
     MatAutocompleteModule,
@@ -52,7 +55,8 @@ import { CardPageComponent } from './card/card-page/card-page.component';
     SharedModule,
     FormsModule,
     MatIconModule,
-    ScrollingModule
+    ScrollingModule,
+    MatDialogModule
   ],
   exports: [
     TagComponent

@@ -1,0 +1,29 @@
+<div class="body">
+  <app-menu></app-menu>
+  <div style="display: flex;
+    justify-content: center;">
+  <form class="form">
+    <div>
+      <img src="../../../../assets/like.svg" style="width: 500px">
+    </div>
+    <div class="order-info-block">
+      <div style="display: inline-grid;">
+        <span class="text-order">Certificate name:</span>
+        <span class="text-order">{{order.certificate.name}}</span>
+      </div>
+      <div style="display: inline-grid;">
+        <span class="text-order">Certificate description</span>
+        <span class="text-order">{{order.certificate.description}}</span>
+      </div>
+      <div style="display: inline-grid;">
+        <span class="text-order">Date of purchase</span>
+        <span class="text-order">{{order.date}}</span>
+      </div>
+      <div style="display: inline-grid;">
+        <span class="text-order">Amount paid</span>
+        <span class="text-order">{{order.amount}} $</span>
+      </div>
+    </div>
+  </form>
+  </div>
+</div>
