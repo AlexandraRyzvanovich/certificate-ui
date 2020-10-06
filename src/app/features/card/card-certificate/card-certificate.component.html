@@ -6,7 +6,7 @@
     <span>{{certificate.name}}</span>
   </div>
   <div class="text">
-    <span>{{certificate.price}}</span>
+    <span>{{certificate.price | currency: 'USD'}}</span>
   </div>
   <div class="text">
     <button class="button" style="background-color: #6fd098; color: #e6ebf1; border-color: transparent;" (click)="removeFromCard(certificate)">Remove</button>

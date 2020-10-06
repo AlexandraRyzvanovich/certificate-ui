@@ -30,6 +30,6 @@ export class OrderService {
   createOrder(certificates: Certificate[]) {
     const userId = localStorage.getItem('id');
     this.http.post(this.api + userId + '/orders/', {certificates}).subscribe();
-
+    localStorage.removeItem('cart' + userId);
   }
 }

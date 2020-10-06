@@ -30,7 +30,6 @@ export class CardPageComponent implements OnInit {
       data: {total: this.total, certificates: this.certificatesToBuy}
     });
   }
-
   ngOnInit(): void {
   this.certificatesToBuy = this.certificateService.getCertificateCard();
   this.total = this.certificateService.getTotalPrice();

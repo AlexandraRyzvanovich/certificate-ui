@@ -3,6 +3,13 @@
   <div id="certificates" class="form-all">
     <app-certificate-component *ngFor="let certificate of certificates"
                                [certificate]="certificate"></app-certificate-component>
+    <div *ngIf="certificates.length == 0" style="display: flex;
+    width: 100%;
+    justify-content: center;
+    font-size: xx-large;
+    padding-top: 50px;">
+      <span>Certificates not found</span>
+    </div>
   </div>
 </div>
 

@@ -1,6 +1,6 @@
 <div mat-dialog-content>
   <p>Would you like to buy all certificates?</p>
-  <p>Total price: {{data.total}}</p>
+  <p>Total price: {{data.total | currency: 'USD'}}</p>
 </div>
 <div mat-dialog-actions>
   <button mat-button class="text button" style="padding-right: 8px;

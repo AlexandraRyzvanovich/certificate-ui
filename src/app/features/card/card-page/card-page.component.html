@@ -11,19 +11,19 @@
       <div>
         <div class="line"></div>
       </div>
-      <div style="display: flex; justify-content: flex-end">
+      <div style="display: flex; justify-content: flex-end" *ngIf="certificatesToBuy.length != 0">
         <div class="text" style="padding-right: 60px;">
           <span>Total</span>
         </div>
         <div class="text">
-          <span>{{total}} $</span>
+          <span>{{total | currency: 'USD'}}</span>
         </div>
       </div>
       <div class="button-block-wrapper">
         <button type="submit" class="button text"
-                style="background-color: #fcfcfc; border: 2px solid gray; width: 100px; margin-right: 10px;">Back
+                style="background-color: #fcfcfc; border: 2px solid gray; width: 100px; margin-right: 10px;" (click)="back()">Back
         </button>
-        <button type="submit" class="button text"
+        <button *ngIf="certificatesToBuy.length != 0" type="submit" class="button text"
                 style="background-color: #6fd098; color: #e6ebf1; border-color: transparent; width: 100px;" (click)="openDialog()">Buy
         </button>
       </div>

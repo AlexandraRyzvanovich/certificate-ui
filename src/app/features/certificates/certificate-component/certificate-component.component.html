@@ -13,8 +13,8 @@
       </div>
     </div>
     <div class="block-bottom">
-      <span class="text cert-price">{{certificate.price}} $</span>
-      <button class="button text" (click)="addCertificateToCard(certificate)">Add to cart</button>
+      <span class="text cert-price">{{certificate.price | currency: 'USD'}}</span>
+      <button class="button text" (click)="addCertificateToCard(certificate); openDialog()">Add to cart</button>
     </div>
   </div>
 </div>

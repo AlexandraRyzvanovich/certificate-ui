@@ -26,7 +26,7 @@
         <span>Certificate description: {{cert.description}}</span>
       </div>
       <div>
-        <button class="button text" style="background-color: #6fd098" (click)="addToCart(cert)">Buy again</button>
+        <button class="button-buy text" (click)="addToCart(cert); openDialog()">Buy again</button>
       </div>
     </div>
   </div>

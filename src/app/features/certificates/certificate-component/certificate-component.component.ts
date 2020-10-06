@@ -1,9 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {Order} from '../../../model/order';
 import {Certificate} from '../../../model/certificate';
 import {CertificateService} from '../../../core/services/certificate.service';
 import {AuthService} from '../../../core/services/auth.service';
+import {CartDialogComponent} from '../../../shared/cart-dialog/cart-dialog.component';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-certificate-component',
@@ -14,7 +15,8 @@ export class CertificateComponentComponent implements OnInit {
 
   constructor(private router: Router,
               private certificateService: CertificateService,
-              private authService: AuthService) { }
+              private authService: AuthService,
+              private dialog: MatDialog) { }
   @Input() certificate: Certificate;
   role: string;
 
@@ -28,6 +30,9 @@ export class CertificateComponentComponent implements OnInit {
   }
   addCertificateToCard(certificate: Certificate): void {
     this.certificateService.addCertificateToCart(certificate);
+  }
+  openDialog(): void {
+    this.dialog.open(CartDialogComponent);
   }
 
   getEditCertificatePage(id: number): void {

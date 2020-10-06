@@ -4,6 +4,8 @@ import {OrderService} from '../../../core/services/order.service';
 import {Order} from '../../../model/order';
 import {Certificate} from '../../../model/certificate';
 import {CertificateService} from '../../../core/services/certificate.service';
+import {MatDialog} from '@angular/material/dialog';
+import {CartDialogComponent} from '../../../shared/cart-dialog/cart-dialog.component';
 
 @Component({
   selector: 'app-order-details-page',
@@ -17,11 +19,16 @@ export class OrderDetailsPageComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private router: Router,
               private orderService: OrderService,
-              private certificateService: CertificateService) {
+              private certificateService: CertificateService,
+              public dialog: MatDialog) {
   }
   addToCart(certificate: Certificate): void {
     this.certificateService.addCertificateToCart(certificate);
   }
+  openDialog() {
+    this.dialog.open(CartDialogComponent);
+  }
+
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(
