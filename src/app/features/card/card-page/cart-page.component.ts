@@ -3,7 +3,7 @@ import {CertificateService} from '../../../core/services/certificate.service';
 import {Certificate} from '../../../model/certificate';
 import {Router} from '@angular/router';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
-import {DialogCardComponent} from './dialog-card/dialog-card.component';
+import {DialogCartComponent} from './dialog-cart/dialog-cart.component';
 
 export interface DialogData {
   total: string;
@@ -11,10 +11,10 @@ export interface DialogData {
 }
 @Component({
   selector: 'app-card-page',
-  templateUrl: './card-page.component.html',
-  styleUrls: ['./card-page.component.scss']
+  templateUrl: './cart-page.component.html',
+  styleUrls: ['./cart-page.component.scss']
 })
-export class CardPageComponent implements OnInit {
+export class CartPageComponent implements OnInit {
   certificatesToBuy: Certificate[];
   total: number;
 
@@ -25,7 +25,7 @@ export class CardPageComponent implements OnInit {
     this.router.navigateByUrl('/certificates');
   }
   openDialog(): void {
-    this.dialog.open(DialogCardComponent, {
+    this.dialog.open(DialogCartComponent, {
       width: '250px',
       data: {total: this.total, certificates: this.certificatesToBuy}
     });

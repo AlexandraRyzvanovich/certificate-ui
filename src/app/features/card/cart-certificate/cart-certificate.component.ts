@@ -5,10 +5,10 @@ import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-card-certificate',
-  templateUrl: './card-certificate.component.html',
-  styleUrls: ['./card-certificate.component.scss', '../../../app.component.scss']
+  templateUrl: './cart-certificate.component.html',
+  styleUrls: ['./cart-certificate.component.scss', '../../../app.component.scss']
 })
-export class CardCertificateComponent implements OnInit {
+export class CartCertificateComponent implements OnInit {
   @Input() certificate: Certificate;
 
   constructor(private certificateService: CertificateService,

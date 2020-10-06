@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CardCertificateComponent } from './card-certificate.component';
+import { DialogCartComponent } from './dialog-cart.component';
 
-describe('CheckoutComponent', () => {
-  let component: CardCertificateComponent;
-  let fixture: ComponentFixture<CardCertificateComponent>;
+describe('DialogCardComponent', () => {
+  let component: DialogCartComponent;
+  let fixture: ComponentFixture<DialogCartComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CardCertificateComponent ]
+      declarations: [ DialogCartComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CardCertificateComponent);
+    fixture = TestBed.createComponent(DialogCartComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

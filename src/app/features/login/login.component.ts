@@ -31,7 +31,6 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  // tslint:disable-next-line:typedef
   get _email() {
     return this.loginForm.get('email');
   }

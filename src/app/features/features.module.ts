@@ -13,7 +13,7 @@ import {RegisterComponent} from './register/register.component';
 import {CertificateCreatePageComponent} from './certificates/certificate-create-page/certificate-create-page.component';
 import {SharedModule} from '../shared/shared.module';
 import {MatIconModule} from '@angular/material/icon';
-import {CardCertificateComponent} from './card/card-certificate/card-certificate.component';
+import {CartCertificateComponent} from './card/cart-certificate/cart-certificate.component';
 import {TagCreationFormComponent} from './tag/tag-creation-form/tag-creation-form.component';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import { OrderComponent } from './orders/order-component/order.component';
@@ -22,8 +22,8 @@ import { OrderDetailsPageComponent } from './orders/order-details-page/order-det
 import { CertificateComponentComponent } from './certificates/certificate-component/certificate-component.component';
 import { CertificateUpdatePageComponent } from './certificates/certificate-update-page/certificate-update-page.component';
 import { TagComponent } from './tag/tag/tag.component';
-import { CardPageComponent } from './card/card-page/card-page.component';
-import { DialogCardComponent } from './card/card-page/dialog-card/dialog-card.component';
+import { CartPageComponent } from './card/card-page/cart-page.component';
+import { DialogCartComponent } from './card/card-page/dialog-cart/dialog-cart.component';
 import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
@@ -33,7 +33,7 @@ import {MatDialogModule} from '@angular/material/dialog';
     LoginComponent,
     RegisterComponent,
     CertificateCreatePageComponent,
-    CardCertificateComponent,
+    CartCertificateComponent,
     TagCreationFormComponent,
     OrderComponent,
     OrdersPageComponent,
@@ -41,8 +41,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     CertificateComponentComponent,
     CertificateUpdatePageComponent,
     TagComponent,
-    CardPageComponent,
-    DialogCardComponent,
+    CartPageComponent,
+    DialogCartComponent,
   ],
   imports: [
     MatAutocompleteModule,

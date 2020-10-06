@@ -28,8 +28,8 @@ export class HeaderComponent implements OnInit {
   isAuthentificated(): boolean {
     return this.authService.isAuthenticated();
   }
-  logOut() {
-
+  logOut(): void {
+    this.authService.logout();
   }
 
   ngOnInit(): void {

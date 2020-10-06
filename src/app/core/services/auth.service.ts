@@ -44,4 +44,10 @@ export class AuthService {
       return true;
     }
   }
+  logout(): void{
+    this.http.get(this.api + '/logout').subscribe();
+    localStorage.removeItem('token');
+    localStorage.removeItem('id');
+    this.router.navigate(['/login']);
+  }
 }

@@ -1,18 +1,18 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {DialogData} from '../card-page.component';
+import {DialogData} from '../cart-page.component';
 import {OrderService} from '../../../../core/services/order.service';
 import {Certificate} from '../../../../model/certificate';
 
 @Component({
   selector: 'app-dialog-card',
-  templateUrl: './dialog-card.component.html',
-  styleUrls: ['./dialog-card.component.scss', '../../../../app.component.scss']
+  templateUrl: './dialog-cart.component.html',
+  styleUrls: ['./dialog-cart.component.scss', '../../../../app.component.scss']
 })
-export class DialogCardComponent implements OnInit {
+export class DialogCartComponent implements OnInit {
 
   constructor(
-    public dialogRef: MatDialogRef<DialogCardComponent>,
+    public dialogRef: MatDialogRef<DialogCartComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
     private orderService: OrderService) {}
 
