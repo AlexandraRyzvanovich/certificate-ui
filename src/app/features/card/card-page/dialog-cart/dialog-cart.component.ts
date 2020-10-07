@@ -21,6 +21,7 @@ export class DialogCartComponent implements OnInit {
   }
   onOkClick(certificates: Certificate[]): void {
     this.orderService.createOrder(certificates);
+    window.location.reload();
   }
 
   ngOnInit(): void {

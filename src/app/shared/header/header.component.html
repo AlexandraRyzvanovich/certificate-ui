@@ -9,7 +9,7 @@
       <a *ngIf="!isAuthentificated()" href="/register">Registration</a>
       <a *ngIf="!isAuthentificated()" href="/login">Login</a>
       <a href="/certificates" >Certificates</a>
-      <a *ngIf="role=='ROLE_ADMIN'" href="/create-certificate">Create certificate</a>
+      <a *ngIf="role=='ROLE_ADMIN'" href="/certificates/create">Create certificate</a>
       <a href="/cart">Cart</a>
       <a *ngIf="role=='ROLE_USER'" href="/orders">Orders</a>
       <a *ngIf="role=='ROLE_ADMIN'" href="/users">Users</a>

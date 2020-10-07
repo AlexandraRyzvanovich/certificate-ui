@@ -4,6 +4,10 @@ import {RegisterService} from '../../core/services/register.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Store} from '@ngrx/store';
 import {Router} from '@angular/router';
+import {CartDialogComponent} from '../../shared/cart-dialog/cart-dialog.component';
+import {MatDialog} from '@angular/material/dialog';
+import {RegisterDialogComponent} from './register-dialog/register-dialog.component';
+import {HttpErrorResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-register',
@@ -16,7 +20,8 @@ export class RegisterComponent {
   constructor(
     private registerService: RegisterService,
     private formBuilder: FormBuilder,
-    private router: Router) {
+    private router: Router,
+    private dialog: MatDialog) {
     this.createForm();
   }
 
@@ -25,26 +30,26 @@ export class RegisterComponent {
       email: ['',
         [Validators.required,
           Validators.minLength(5),
-          Validators.maxLength(16)]
+          Validators.maxLength(50)]
       ],
       password: ['', [Validators.required,
-        Validators.minLength(5),
-        Validators.maxLength(16)]
+        Validators.minLength(6),
+        Validators.maxLength(50)]
       ],
       name: ['',
         [Validators.required,
-          Validators.minLength(5),
-          Validators.maxLength(16)]
+          Validators.minLength(2),
+          Validators.maxLength(50)]
       ],
       surname: ['',
         [Validators.required,
-          Validators.minLength(5),
-          Validators.maxLength(16)]
+          Validators.minLength(2),
+          Validators.maxLength(50)]
       ],
       repeatPassword: ['',
         [Validators.required,
-          Validators.minLength(5),
-          Validators.maxLength(16)]
+          Validators.minLength(6),
+          Validators.maxLength(50)]
       ],
     });
   }
@@ -80,9 +85,25 @@ export class RegisterComponent {
       name: this._name.value,
       surname: this._surname.value,
     };
-    this.registerService.register(payload);
+    if (this._email.invalid || this._password.invalid || this._surname.invalid || this._name.invalid) {
+      return;
+    }
+    this.registerService.register(payload).subscribe(resp => {
+      this.router.navigate(['/search-certificates']);
+      this.openSuccessDialog();
+    }, (error: HttpErrorResponse) => {
+          if (error.status === 409 ) {
+
+          }
+    });
   }
+
   back(): void {
+    this.router.navigateByUrl('/login');
+  }
+
+  openSuccessDialog(): void {
+    this.dialog.open(RegisterDialogComponent);
     this.router.navigateByUrl('/login');
   }
 }

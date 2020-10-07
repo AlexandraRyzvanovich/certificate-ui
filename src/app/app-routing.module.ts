@@ -32,7 +32,7 @@ const routes: Routes = [
       {
         path: ':id/details',
         component: OrderDetailsPageComponent,
-        // canActivate: [UserGuard]
+        canActivate: [UserGuard]
       },
     ]
   },
@@ -50,12 +50,12 @@ const routes: Routes = [
       {
         path: 'create',
         component: CertificateCreatePageComponent,
-        // canActivate: [AdminGuard]
+        canActivate: [AdminGuard]
       },
       {
         path: ':id/update',
         component: CertificateUpdatePageComponent,
-        // canActivate: [AdminGuard]
+        canActivate: [AdminGuard]
       }
     ]
   },

@@ -9,13 +9,17 @@
         <a class="text" >First name</a>
         <input type="text" name="name" class="input" formControlName="name">
         <div *ngIf="_name.invalid && (_name.touched || _name.dirty)">
+          <span class="error-message" *ngIf="_name.errors?.minLength">Min length 2 characters</span>
+          <span class="error-message" *ngIf="_name.errors?.maxLength">Max length 50 characters</span>
           <span class="error-message" *ngIf="_name.errors?.required">Field is required</span>
         </div>
       </div>
       <div class="input-wrapper">
         <a class="text">Last name</a>
-        <input type="text" name="surname" class="input" formControlName="surname">
+        <input type="text" minlength="2" name="surname" class="input" formControlName="surname">
         <div *ngIf="_surname.invalid && (_surname.touched || _surname.dirty)">
+          <span class="error-message" *ngIf="_surname.errors?.minLength">Min length 2 characters</span>
+          <span class="error-message" *ngIf="_surname.errors?.maxLength">Max length 50 characters</span>
           <span class="error-message" *ngIf="_surname.errors?.required">Field is required</span>
         </div>
       </div>
@@ -26,6 +30,8 @@
         <input type="text" name="password" class="input" formControlName="password">
         <div *ngIf="_password.invalid && (_password.touched || _password.dirty)">
           <span class="error-message" *ngIf="_password.errors?.required">Field is required</span>
+          <span class="error-message" *ngIf="_password.errors?.minLength">Min length 6 characters</span>
+          <span class="error-message" *ngIf="_password.errors?.maxLength">Max length 50 characters</span>
           <span class="error-message" *ngIf="_password.value !== _repeatPassword.value">Password fields should match</span>
         </div>
       </div>
@@ -34,6 +40,8 @@
         <input type="text" class="input" formControlName="repeatPassword">
         <div *ngIf="_repeatPassword.invalid && (_repeatPassword.touched || _repeatPassword.dirty)">
           <span class="error-message" *ngIf="_repeatPassword.errors?.required">Field is required </span>
+          <span class="error-message" *ngIf="_repeatPassword.errors?.minLength">Min length 6 characters</span>
+          <span class="error-message" *ngIf="_repeatPassword.errors?.maxLength">Max length 50 characters</span>
           <span class="error-message" *ngIf="_password.value !== _repeatPassword.value">Password fields should match</span>
         </div>
       </div>
@@ -43,6 +51,8 @@
         <a class="text">Email</a>
         <input type="text" class="input" name="email" formControlName="email">
         <div *ngIf="_email.invalid && (_email.touched || _email.dirty)">
+          <span class="error-message" *ngIf="_email.errors?.minLength">Min length 5 characters</span>
+          <span class="error-message" *ngIf="_email.errors?.maxLength">Max length 50 characters</span>
           <span class="error-message" *ngIf="_email.errors?.required">Field is required</span>
         </div>
       </div>

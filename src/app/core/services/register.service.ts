@@ -12,9 +12,7 @@ export class RegisterService {
   constructor(private http: HttpClient, private router: Router) { }
   // tslint:disable-next-line:typedef
   register(body: any) {
-    console.log(body);
-    return this.http.post(this.api + '/signup', body).subscribe(resp => {
-      this.router.navigate(['/search-certificates']);
-    });
+    return this.http.post(this.api + '/signup', body);
+
   }
 }
