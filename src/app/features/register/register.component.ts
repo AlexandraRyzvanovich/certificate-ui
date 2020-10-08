@@ -1,13 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {User} from '../../model/user';
 import {RegisterService} from '../../core/services/register.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Store} from '@ngrx/store';
 import {Router} from '@angular/router';
-import {CartDialogComponent} from '../../shared/cart-dialog/cart-dialog.component';
 import {MatDialog} from '@angular/material/dialog';
-import {RegisterDialogComponent} from './register-dialog/register-dialog.component';
 import {HttpErrorResponse} from '@angular/common/http';
+import {DialogCartComponent} from '../card/card-page/dialog-cart/dialog-cart.component';
+import {DialogGeneralData} from '../../shared/dialog/dialig-general/dialog-general-data';
+import {DialogGeneralComponent} from '../../shared/dialog/dialig-general/dialog-general.component';
 
 @Component({
   selector: 'app-register',
@@ -16,6 +15,7 @@ import {HttpErrorResponse} from '@angular/common/http';
 })
 export class RegisterComponent {
   registerForm: FormGroup;
+  dialogData: DialogGeneralData;
 
   constructor(
     private registerService: RegisterService,
@@ -78,7 +78,6 @@ export class RegisterComponent {
   }
 
   register(): void {
-
     const payload = {
       email: this._email.value,
       password: this._password.value,
@@ -89,11 +88,17 @@ export class RegisterComponent {
       return;
     }
     this.registerService.register(payload).subscribe(resp => {
-      this.router.navigate(['/search-certificates']);
-      this.openSuccessDialog();
+      this.dialogData = {title: 'Registration', message: 'You have successfully signed up. Please sign in'};
+      this.openDialog(this.dialogData);
+      this.router.navigate(['/login']);
     }, (error: HttpErrorResponse) => {
           if (error.status === 409 ) {
-
+            this.dialogData = {title: 'Registration', message: 'User with such email already exists.'};
+            this.openDialog(this.dialogData);
+          }
+          if (error.status === 400) {
+            this.dialogData = {title: 'Registration', message: ' Please, contact support center.'};
+            this.openDialog(this.dialogData);
           }
     });
   }
@@ -101,9 +106,14 @@ export class RegisterComponent {
   back(): void {
     this.router.navigateByUrl('/login');
   }
-
-  openSuccessDialog(): void {
-    this.dialog.open(RegisterDialogComponent);
-    this.router.navigateByUrl('/login');
+  // openSuccessDialog(): void {
+  //   this.dialog.open(RegisterDialogComponent);
+  //   this.router.navigateByUrl('/login');
+  // }
+  openDialog(dialogSuccessData: DialogGeneralData): void {
+    this.dialog.open(DialogGeneralComponent, {
+      width: '500px',
+      data: dialogSuccessData
+    });
   }
 }

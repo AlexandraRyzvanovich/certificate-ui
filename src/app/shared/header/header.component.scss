@@ -19,23 +19,20 @@
 .search {
   display: flex;
   align-self: center;
-  position: absolute;
-  left: 26%;
-  right: 0;
 }
 .search-input {
   border: 2px solid #f2f2f2;
   color: #b7b7b7;
-  width: 42%;
   height: 33px;
+  max-width: 350px;
 
 }
 .search-select {
   border: 2px solid #f2f2f2;
   color: #b7b7b7;
   padding: 2px;
-  width: 18%;
   height: 33px;
+  width: auto;
 }
 .right-side {
   display: flex;

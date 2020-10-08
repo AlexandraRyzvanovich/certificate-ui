@@ -1,6 +1,11 @@
 import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../../core/services/auth.service';
+import {DialogGeneralData} from '../../shared/dialog/dialig-general/dialog-general-data';
+import {DialogGeneralComponent} from '../../shared/dialog/dialig-general/dialog-general.component';
+import {HttpErrorResponse} from '@angular/common/http';
+import {MatDialog} from '@angular/material/dialog';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,9 +14,12 @@ import {AuthService} from '../../core/services/auth.service';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
+  dialogData: DialogGeneralData;
 
   constructor(private loginService: AuthService,
               private formBuilder: FormBuilder,
+              private router: Router,
+              private dialog: MatDialog
   ) {
     this.createForm();
   }

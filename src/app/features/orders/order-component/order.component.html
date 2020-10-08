@@ -3,10 +3,10 @@
     <img src="../../../../assets/shopping-bag.svg" class="animation-img  img-main">
   </div>
   <div>
-    <span class="text">{{order.date}}</span>
+    <span class="text">{{order.date | date:'yyyy-MM-dd HH:mm:ss'}}</span>
   </div>
   <div>
-    <span class="text">{{order.amount}} $</span>
+    <span class="text">{{order.amount | currency: 'USD'}} $</span>
   </div>
   <div>
     <button class="button" type="submit text" style="width: auto;" (click)="getDetails(order.id)">Info</button>

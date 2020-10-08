@@ -5,6 +5,7 @@
   <form class="input-form" [formGroup]="certificateUpdateForm">
     <div class="column-wrapper">
       <div class="input-wrapper">
+        <span class="text">Certificate name</span>
         <input type="text" class="input" name="name" placeholder="{{oldCertificate.name}}" formControlName="certificateName"/>
         <div *ngIf="_certificateName.invalid && (_certificateName.touched || _certificateName.dirty)">
           <span class="error-message" *ngIf="_certificateName.errors?.minLength">Min length 3 characters</span>
@@ -12,6 +13,7 @@
         </div>
       </div>
       <div class="input-wrapper">
+        <span class="text">Price</span>
         <input type="number" class="input" name = "price" placeholder="{{oldCertificate.price}}" formControlName="price"/>
         <div *ngIf="_price.invalid && (_price.touched || _price.dirty)">
           <span class="error-message" *ngIf="_price.errors?.min">Min = 1$</span>
@@ -48,17 +50,17 @@
     </div>
     <div class="column-wrapper">
       <div class="input-wrapper">
+        <span class="text">Valid days</span>
         <input type="number" class="input" name="validDays" placeholder="{{oldCertificate.validDays}}" formControlName="validDays">
         <div *ngIf="_validDays.invalid && (_validDays.touched || _validDays.dirty)">
-          <span class="error-message" *ngIf="_validDays.errors?.required">Field is required</span>
           <span class="error-message" *ngIf="_validDays.errors?.min">Min = 1</span>
           <span class="error-message" *ngIf="_validDays.errors?.max">Max = 365</span>
         </div>
       </div>
       <div class="input-wrapper">
-          <input type="text" class="input" style="height: 130px;" name="description" placeholder="{{oldCertificate.description}}" formControlName="certificateDescription">
+        <span class="text">Description</span>
+        <input type="text" class="input" style="height: 130px;" name="description" placeholder="{{oldCertificate.description}}" formControlName="certificateDescription">
           <div *ngIf="_certificateDescription.invalid && (_certificateDescription.touched || _certificateDescription.dirty)">
-            <span class="error-message" *ngIf="_certificateDescription.errors?.required">Field is required</span>
             <span class="error-message" *ngIf="_certificateDescription.errors?.minLength">Min length 1 character</span>
             <span class="error-message" *ngIf="_certificateDescription.errors?.maxLength">Max length 1000 character</span>
           </div>

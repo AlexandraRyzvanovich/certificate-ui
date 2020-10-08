@@ -10,6 +10,11 @@ import {map, startWith} from 'rxjs/operators';
 import {MatChipInputEvent} from '@angular/material/chips';
 import {Certificate} from '../../../model/certificate';
 import {ActivatedRoute, Router} from '@angular/router';
+import {DialogGeneralData} from '../../../shared/dialog/dialig-general/dialog-general-data';
+import {DialogGeneralComponent} from '../../../shared/dialog/dialig-general/dialog-general.component';
+import {MatDialog} from '@angular/material/dialog';
+import {Status} from 'tslint/lib/runner';
+import {HttpErrorResponse} from '@angular/common/http';
 
 export interface CertificateParams {
   name: string;
@@ -38,6 +43,7 @@ export class CertificateUpdatePageComponent implements OnInit {
   oldCertificate: Certificate = null;
   tags: Tag[] = [];
   certificateParams: CertificateParams;
+  dialogData: DialogGeneralData;
 
   @ViewChild('tagInput') tagInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
@@ -46,7 +52,8 @@ export class CertificateUpdatePageComponent implements OnInit {
               private certificateService: CertificateService,
               private formBuilder: FormBuilder,
               private route: ActivatedRoute,
-              private router: Router) {
+              private router: Router,
+              private dialog: MatDialog) {
     this.filteredTags = this.tagCtrl.valueChanges.pipe(
       startWith(null),
       map((tag: string | null) => {
@@ -125,8 +132,7 @@ export class CertificateUpdatePageComponent implements OnInit {
     return this.allTags.filter(tag => tag.name.toLowerCase() === filterValue);
   }
 
-  // tslint:disable-next-line:typedef
-  updateCertificate() {
+  updateCertificate(): void {
     if (this._certificateName.invalid || this._certificateDescription.invalid ||
       this._price.invalid || this._validDays.invalid) {
       return;
@@ -140,8 +146,24 @@ export class CertificateUpdatePageComponent implements OnInit {
     };
 
     this.certificateService
-      .updateCertificate(this.oldCertificate.id, this.certificateParams);
+      .updateCertificate(this.oldCertificate.id, this.certificateParams).subscribe((resp: Status) => {
+      this.dialogData = {title: 'Update certificate', message: 'Certificates has been successfully updated.'};
+      this.openDialog(this.dialogData);
+      this.router.navigate(['certificates']);
+    }, ((error: HttpErrorResponse) => {
+      if (error.status === 409) {
+        this.dialogData = {title: 'Update certificate', message: 'Certificates with such name already exists'};
+      }
+    }));
   }
+
+  openDialog(dialogsData: DialogGeneralData): void {
+    this.dialog.open(DialogGeneralComponent, {
+      width: '500px',
+      data: dialogsData
+    });
+  }
+
   back(): void {
     this.router.navigateByUrl('/certificates');
   }

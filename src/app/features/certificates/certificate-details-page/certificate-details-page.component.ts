@@ -3,6 +3,10 @@ import {CertificateService} from '../../../core/services/certificate.service';
 import {Certificate} from '../../../model/certificate';
 import {Order} from '../../../model/order';
 import {ActivatedRoute, Router} from '@angular/router';
+import {DialogGeneralData} from '../../../shared/dialog/dialig-general/dialog-general-data';
+import {DialogGeneralComponent} from '../../../shared/dialog/dialig-general/dialog-general.component';
+import {CartDialogComponent} from '../../../shared/cart-dialog/cart-dialog.component';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-certificate-form',
@@ -12,13 +16,18 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class CertificateDetailsPageComponent implements OnInit {
   certificate: Certificate = null;
 
-
   constructor(private certificateService: CertificateService,
               private route: ActivatedRoute,
-              private router: Router) { }
+              private router: Router,
+              private dialog: MatDialog) { }
 
   addCertificateToCard(certificate: Certificate): void {
     this.certificateService.addCertificateToCart(certificate);
+    this.router.navigateByUrl('/cart');
+  }
+
+  openDialog(): void {
+    this.dialog.open(CartDialogComponent);
   }
 
   ngOnInit(): void {

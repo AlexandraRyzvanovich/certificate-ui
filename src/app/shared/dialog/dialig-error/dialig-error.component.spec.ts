@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RegisterDialogComponent } from './register-dialog.component';
+import { DialigErrorComponent } from './dialig-error.component';
 
-describe('RegisterDialogComponent', () => {
-  let component: RegisterDialogComponent;
-  let fixture: ComponentFixture<RegisterDialogComponent>;
+describe('DialigErrorComponent', () => {
+  let component: DialigErrorComponent;
+  let fixture: ComponentFixture<DialigErrorComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RegisterDialogComponent ]
+      declarations: [ DialigErrorComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RegisterDialogComponent);
+    fixture = TestBed.createComponent(DialigErrorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

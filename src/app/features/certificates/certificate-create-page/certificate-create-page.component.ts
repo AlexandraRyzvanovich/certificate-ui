@@ -9,6 +9,10 @@ import {MatChipInputEvent} from '@angular/material/chips';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import {Router} from '@angular/router';
+import {DialogGeneralData} from '../../../shared/dialog/dialig-general/dialog-general-data';
+import {DialogGeneralComponent} from '../../../shared/dialog/dialig-general/dialog-general.component';
+import {HttpErrorResponse} from '@angular/common/http';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-certificate-creation-form',
@@ -18,23 +22,12 @@ import {Router} from '@angular/router';
   ]
 })
 export class CertificateCreatePageComponent implements OnInit {
-  certificateCreationForm: FormGroup;
-  allTags: Tag[] = [];
-  visible = true;
-  selectable = true;
-  removable = true;
-  separatorKeysCodes: number[] = [ENTER, COMMA];
-  tagCtrl = new FormControl();
-  filteredTags: Observable<Tag[]>;
-  tags: Tag[] = [];
-
-  @ViewChild('tagInput') tagInput: ElementRef<HTMLInputElement>;
-  @ViewChild('auto') matAutocomplete: MatAutocomplete;
 
   constructor(private tagService: TagService,
               private certificateService: CertificateService,
               private formBuilder: FormBuilder,
-              private router: Router) {
+              private router: Router,
+              private dialog: MatDialog) {
     this.filteredTags = this.tagCtrl.valueChanges.pipe(
       startWith(null),
       map((tag: string | null) => {
@@ -42,27 +35,6 @@ export class CertificateCreatePageComponent implements OnInit {
         return tag ? this._filter(tag) : this.allTags.slice();
       }));
     this.createForm();
-  }
-  private createForm() {
-    this.certificateCreationForm = this.formBuilder.group({
-      certificateName: ['',
-        [Validators.required,
-          Validators.minLength(5),
-          Validators.maxLength(16)]
-      ],
-      certificateDescription: ['', [Validators.required,
-        Validators.minLength(5),
-        Validators.maxLength(100)]
-      ],
-      validDays: ['', [Validators.required,
-        Validators.min(1),
-        Validators.max(365)]
-      ],
-      price: ['', [Validators.required,
-        Validators.min(1),
-        Validators.maxLength(10000)]
-      ]
-    });
   }
   get _certificateName() {
     return this.certificateCreationForm.get('certificateName');
@@ -75,6 +47,40 @@ export class CertificateCreatePageComponent implements OnInit {
   }
   get _price() {
     return this.certificateCreationForm.get('price');
+  }
+  certificateCreationForm: FormGroup;
+  allTags: Tag[] = [];
+  selectable = true;
+  removable = true;
+  separatorKeysCodes: number[] = [ENTER, COMMA];
+  tagCtrl = new FormControl();
+  filteredTags: Observable<Tag[]>;
+  tags: Tag[] = [];
+  dialogData: DialogGeneralData;
+
+  @ViewChild('tagInput') tagInput: ElementRef<HTMLInputElement>;
+  @ViewChild('auto') matAutocomplete: MatAutocomplete;
+
+  private createForm() {
+    this.certificateCreationForm = this.formBuilder.group({
+      certificateName: ['',
+        [Validators.required,
+          Validators.minLength(1),
+          Validators.maxLength(50)]
+      ],
+      certificateDescription: ['', [Validators.required,
+        Validators.minLength(1),
+        Validators.maxLength(200)]
+      ],
+      validDays: ['', [Validators.required,
+        Validators.min(1),
+        Validators.max(365)]
+      ],
+      price: ['', [Validators.required,
+        Validators.min(1),
+        Validators.max(10000)]
+      ]
+    });
   }
 
   add(event: MatChipInputEvent): void {
@@ -119,11 +125,35 @@ export class CertificateCreatePageComponent implements OnInit {
       this._price.invalid || this._validDays.invalid){
       return;
     }
+    const payload = {
+      name: this._certificateName.value,
+      description: this._certificateDescription.value,
+      price: this._price.value,
+      validDays: this._validDays.value,
+      tags: this.tags
+    };
     this.certificateService
-      .createCertificate(this._certificateName.value, this._certificateDescription.value,
-        this._validDays.value, this._price.value, this.tags);
+      .createCertificate(payload)
+      .subscribe(resp => {
+      this.dialogData = {title: 'Create certificate', message: 'Certificate has been successfully created.'};
+      this.openDialog(this.dialogData);
+      this.router.navigate(['/create']);
+      }, (error: HttpErrorResponse) => {
+      if (error.status === 409 ) {
+        this.dialogData = {title: 'Create certificate', message: 'Certificate with such name already exists'};
+        this.openDialog(this.dialogData);
+      }
+      if (error.status === 400) {
+        this.dialogData = {title: 'Create certificate', message: ' Please, contact support center.'};
+      }
+    });
   }
-
+  openDialog(dialogsData: DialogGeneralData): void {
+    this.dialog.open(DialogGeneralComponent, {
+      width: '500px',
+      data: dialogsData
+    });
+  }
   back(): void {
     this.router.navigateByUrl('/certificates');
   }

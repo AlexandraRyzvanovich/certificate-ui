@@ -16,7 +16,7 @@
     </div>
     </div>
     <div class="search" *ngIf="isCertificatesRoute()">
-      <input type="search" class="search-input text" placeholder="Search by item name"/>
+      <input style="width: 400px" type="search" class="search-input text" placeholder="Search by item name"/>
       <select class="text search-select">
         <option selected class="text" value="">All categories</option>
         <option class="text" *ngFor="let tag of tags" name="tagName" (select)="tag">{{tag?.name}}</option>
@@ -33,7 +33,7 @@
       <span class="vl"></span>
       <a href="/register" class="text href">Sign up</a>
       </div>
-      <div *ngIf="isAuthentificated()" (click)="logOut()">
+      <div *ngIf="isAuthentificated()" style="cursor: pointer;" (click)="logOut()">
         Log out
       </div>
     </div>

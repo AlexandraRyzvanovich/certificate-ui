@@ -42,12 +42,8 @@ export class CertificateService {
     }));
   }
 
-  // tslint:disable-next-line:typedef
-  createCertificate(name: string, description: string, price: number, validDays: number, tagIds: Tag[]) {
-    this.http.post(this.api, {name, description, price, validDays, tagIds})
-      .subscribe((resp: Status) => {
-        this.router.navigate(['certificates']);
-      });
+  createCertificate(body: any){
+    return this.http.post(this.api, body);
   }
 
   // tslint:disable-next-line:typedef
@@ -104,8 +100,6 @@ export class CertificateService {
 
   // tslint:disable-next-line:typedef
   updateCertificate(id: number, certificateParams: CertificateParams) {
-    this.http.post(this.api + '/' + id, certificateParams).subscribe((resp: Status) => {
-      this.router.navigate(['certificates']);
-    });
+   return this.http.post(this.api + '/' + id, certificateParams);
   }
 }

@@ -25,7 +25,6 @@ import { TagComponent } from './tag/tag/tag.component';
 import { CartPageComponent } from './card/card-page/cart-page.component';
 import { DialogCartComponent } from './card/card-page/dialog-cart/dialog-cart.component';
 import {MatDialogModule} from '@angular/material/dialog';
-import { RegisterDialogComponent } from './register/register-dialog/register-dialog.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +43,6 @@ import { RegisterDialogComponent } from './register/register-dialog/register-dia
     TagComponent,
     CartPageComponent,
     DialogCartComponent,
-    RegisterDialogComponent,
   ],
   imports: [
     MatAutocompleteModule,

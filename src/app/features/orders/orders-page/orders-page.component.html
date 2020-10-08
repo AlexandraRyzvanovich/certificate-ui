@@ -3,7 +3,10 @@
     <a class="text" style="font-size: x-large; color: white">Your orders</a>
   </div>
   <div id="orders" class="form-all">
-    <div class="block">
+    <div *ngIf="orders.length == 0" class="text empty-message">
+      <span style="font-size: x-large;">No orders were processed.</span>
+    </div>
+    <div class="block" *ngIf="orders.length != 0">
       <div style="width: 100px">
       </div>
       <div>
